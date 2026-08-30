@@ -11,22 +11,146 @@ export function HowItWorks() {
   const current = howItWorksData.steps[activeStep] || howItWorksData.steps[1];
 
   return (
-    <section id="how" className="relative bg-white py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <section id="how" className="relative bg-white py-16 sm:py-28 lg:py-32">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         {/* Section Heading */}
-        <div className="mx-auto max-w-3xl text-center mb-16">
+        <div className="mx-auto max-w-3xl text-center mb-8 sm:mb-16">
           <span className="text-xs font-extrabold tracking-widest text-teal-800 uppercase">
             {howItWorksData.eyebrow}
           </span>
-          <h2 className="mt-3 font-sora text-3xl font-bold tracking-tight text-brand-ink sm:text-4xl lg:text-5xl">
+          <h2 className="mt-3 font-sora text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-brand-ink">
             {howItWorksData.titlePrimary} <br />
             <span className="text-brand-muted font-normal">{howItWorksData.titleHighlight}</span>
           </h2>
         </div>
 
-        {/* Main Shell */}
-        <div className="overflow-hidden rounded-3xl border border-brand-line/80 bg-gradient-to-br from-[#fbfdfc] to-[#f2f7f6] shadow-glow">
-          {/* Top Step Tabs: 4 compact columns on mobile, line tabs on desktop */}
+        {/* MOBILE ONLY (< lg): Compact, App-Like Interactive Step Experience */}
+        <div className="lg:hidden">
+          {/* Mobile 4-Step Segmented Navigator - Zero Horizontal Scroll */}
+          <div className="grid grid-cols-4 gap-1 p-1 bg-slate-100/90 rounded-2xl border border-brand-line mb-4">
+            {[1, 2, 3, 4].map((stepNum) => {
+              const step = howItWorksData.steps[stepNum];
+              const isActive = activeStep === stepNum;
+              return (
+                <button
+                  key={stepNum}
+                  type="button"
+                  onClick={() => setActiveStep(stepNum)}
+                  className={`flex flex-col items-center justify-center py-2 px-1 rounded-xl text-center transition-all ${
+                    isActive
+                      ? "bg-teal-900 text-white shadow-sm font-bold"
+                      : "text-brand-muted hover:text-brand-ink"
+                  }`}
+                >
+                  <span className={`text-[9px] font-extrabold ${isActive ? "text-teal-200" : "text-brand-muted"}`}>
+                    0{stepNum}
+                  </span>
+                  <span className="text-[10px] truncate max-w-full font-medium">
+                    {step.label}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Unified Compact Mobile Card */}
+          <div className="rounded-3xl border border-brand-line/80 bg-gradient-to-br from-[#fbfdfc] to-[#f2f7f6] p-5 shadow-sm">
+            <span className="inline-block rounded-full border border-teal-200 bg-white px-3 py-0.5 text-[10px] font-bold text-teal-800 shadow-xs mb-2">
+              ÉTAPE <b className="text-teal-950">0{activeStep}</b>
+            </span>
+
+            <h3 className="font-sora text-lg sm:text-xl font-bold text-brand-ink leading-snug">
+              {current.title}
+            </h3>
+
+            <p className="mt-1.5 text-xs leading-relaxed text-brand-muted">
+              {current.description}
+            </p>
+
+            {/* Compact Step Highlights */}
+            <div className="my-4 space-y-1.5 border-t border-b border-brand-line/60 py-3 text-xs">
+              {current.highlights.map((highlight, idx) => (
+                <div key={idx} className="flex items-center gap-2 text-brand-ink text-[11px] font-medium">
+                  <span className="flex h-4 w-4 flex-none items-center justify-center rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200">
+                    <Icon name="check" className="h-2.5 w-2.5" />
+                  </span>
+                  <span>{highlight}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Compact Interactive Screen Box */}
+            <div className="rounded-2xl border border-teal-900/15 bg-white p-3.5 shadow-sm">
+              {activeStep === 1 && (
+                <div className="flex flex-col items-center justify-center rounded-xl bg-gradient-to-b from-slate-800 to-slate-950 p-4 text-center text-white">
+                  <div className="relative flex h-24 w-24 items-center justify-center rounded-xl border border-dashed border-teal-400/60 bg-black/40 p-2">
+                    <Icon name="qr" className="h-14 w-14 text-teal-100" />
+                    <span className="absolute -top-1 -left-1 h-3 w-3 border-t-2 border-l-2 border-teal-300" />
+                    <span className="absolute -top-1 -right-1 h-3 w-3 border-t-2 border-r-2 border-teal-300" />
+                    <span className="absolute -bottom-1 -left-1 h-3 w-3 border-b-2 border-l-2 border-teal-300" />
+                    <span className="absolute -bottom-1 -right-1 h-3 w-3 border-b-2 border-r-2 border-teal-300" />
+                  </div>
+                  <span className="mt-2 text-[9.5px] text-teal-200 font-mono">
+                    Cadrez le QR code de l'actif
+                  </span>
+                </div>
+              )}
+
+              {activeStep === 2 && (
+                <div className="space-y-2 text-[10px]">
+                  <div className="flex items-center gap-2 rounded-lg border border-brand-line bg-brand-bg/60 p-2">
+                    <span className="flex h-6 w-6 items-center justify-center rounded bg-teal-50 font-bold text-teal-800 text-[8px]">
+                      GE
+                    </span>
+                    <div>
+                      <b className="block text-brand-ink text-[10px] leading-tight">Groupe 500 KVA</b>
+                      <small className="text-brand-muted text-[8px]">EQP-0001 · Hôtel Savana</small>
+                    </div>
+                  </div>
+                  <div className="rounded-lg bg-rose-50 border border-rose-200 p-2 text-rose-700 font-semibold flex items-center justify-between">
+                    <span>Niveau d'urgence : Critique</span>
+                    <span>1 photo jointe</span>
+                  </div>
+                </div>
+              )}
+
+              {activeStep === 3 && (
+                <div className="space-y-2 text-[10px]">
+                  <div className="flex items-center justify-between border-b border-brand-line/60 pb-1.5">
+                    <b className="text-brand-ink text-[10px]">Service 500H en cours</b>
+                    <span className="font-mono font-bold text-teal-900">00:36:24</span>
+                  </div>
+                  <div className="grid grid-cols-2 gap-1.5">
+                    <div className="flex items-center gap-1.5 rounded-lg bg-emerald-50 border border-emerald-200 p-1.5 text-emerald-800 text-[9px] font-medium">
+                      ✓ Contrôle huile
+                    </div>
+                    <div className="flex items-center gap-1.5 rounded-lg bg-emerald-50 border border-emerald-200 p-1.5 text-emerald-800 text-[9px] font-medium">
+                      ✓ Filtre remplacé
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {activeStep === 4 && (
+                <div className="space-y-2 text-[10px]">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <span className="text-[8px] text-brand-muted">TCO Global</span>
+                      <strong className="block font-sora text-sm font-bold text-teal-900">18,4 M FCFA</strong>
+                    </div>
+                    <span className="rounded-full bg-emerald-50 border border-emerald-200 px-2 py-0.5 text-[9px] font-bold text-emerald-700">
+                      −8.6% ce mois
+                    </span>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* DESKTOP VIEW (lg+): Full 2-Column Experience with Large Phone Simulation */}
+        <div className="hidden lg:block overflow-hidden rounded-3xl border border-brand-line/80 bg-gradient-to-br from-[#fbfdfc] to-[#f2f7f6] shadow-glow">
+          {/* Top Step Tabs */}
           <div className="grid grid-cols-4 border-b border-brand-line bg-white/70 backdrop-blur-md">
             {[1, 2, 3, 4].map((stepNum) => {
               const step = howItWorksData.steps[stepNum];
@@ -45,18 +169,18 @@ export function HowItWorks() {
           </div>
 
           {/* Step Content: Left Copy + Right Mobile Simulation */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 p-5 sm:p-10 lg:p-16 items-center">
+          <div className="grid grid-cols-12 gap-12 p-12 lg:p-16 items-center">
             {/* Left Copy */}
-            <div className="lg:col-span-6 flex flex-col items-start">
+            <div className="col-span-6 flex flex-col items-start">
               <span className="rounded-full border border-teal-200 bg-white px-3.5 py-1 text-xs font-bold text-teal-800 shadow-xs">
                 ÉTAPE <b className="text-teal-950">0{activeStep}</b>
               </span>
 
-              <h3 className="mt-4 font-sora text-2xl sm:text-3xl lg:text-4xl font-bold text-brand-ink leading-tight">
+              <h3 className="mt-4 font-sora text-3xl lg:text-4xl font-bold text-brand-ink leading-tight">
                 {current.title}
               </h3>
 
-              <p className="mt-4 text-sm md:text-base leading-relaxed text-brand-muted">
+              <p className="mt-4 text-base leading-relaxed text-brand-muted">
                 {current.description}
               </p>
 
@@ -64,7 +188,7 @@ export function HowItWorks() {
                 {current.highlights.map((highlight, idx) => (
                   <li
                     key={idx}
-                    className="flex items-center gap-3 text-xs md:text-sm font-semibold text-brand-ink"
+                    className="flex items-center gap-3 text-sm font-semibold text-brand-ink"
                   >
                     <span className="flex h-5 w-5 flex-none items-center justify-center rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200">
                       <Icon name="check" className="h-3.5 w-3.5" />
@@ -76,20 +200,20 @@ export function HowItWorks() {
             </div>
 
             {/* Right Visual Phone Simulation */}
-            <div className="lg:col-span-6 relative flex items-center justify-center">
+            <div className="col-span-6 relative flex items-center justify-center">
               {/* Decorative floating orbit badges */}
-              <div className="absolute -left-4 top-8 hidden sm:flex h-12 w-12 items-center justify-center rounded-2xl border border-teal-100 bg-white text-teal-700 shadow-card animate-float">
+              <div className="absolute -left-4 top-8 flex h-12 w-12 items-center justify-center rounded-2xl border border-teal-100 bg-white text-teal-700 shadow-card animate-float">
                 <Icon name="qr" className="h-6 w-6" />
               </div>
-              <div className="absolute -right-4 top-20 hidden sm:flex h-12 w-12 items-center justify-center rounded-2xl border border-amber-100 bg-white text-gold-dark shadow-card animate-float-delayed">
+              <div className="absolute -right-4 top-20 flex h-12 w-12 items-center justify-center rounded-2xl border border-amber-100 bg-white text-gold-dark shadow-card animate-float-delayed">
                 <Icon name="wrench" className="h-6 w-6" />
               </div>
-              <div className="absolute right-8 -bottom-4 hidden sm:flex h-12 w-12 items-center justify-center rounded-2xl border border-sky-100 bg-white text-sky-700 shadow-card animate-float">
+              <div className="absolute right-8 -bottom-4 flex h-12 w-12 items-center justify-center rounded-2xl border border-sky-100 bg-white text-sky-700 shadow-card animate-float">
                 <Icon name="chart" className="h-6 w-6" />
               </div>
 
               {/* Smartphone Frame */}
-              <div className="relative w-[280px] sm:w-[300px] rounded-[40px] border-4 border-slate-950 bg-slate-950 p-2.5 shadow-2xl overflow-hidden z-10">
+              <div className="relative w-[300px] rounded-[40px] border-4 border-slate-950 bg-slate-950 p-2.5 shadow-2xl overflow-hidden z-10">
                 <div className="relative h-[480px] rounded-[32px] bg-[#f7f9f9] overflow-hidden flex flex-col">
                   {/* Phone Header */}
                   <div className="flex h-8 items-center justify-between bg-teal-900 px-4 text-[9px] text-white">
@@ -116,7 +240,7 @@ export function HowItWorks() {
                     <span className="text-teal-200 text-xs">●</span>
                   </div>
 
-                  {/* Dynamic Screen Content Based on Active Step */}
+                  {/* Dynamic Screen Content */}
                   <div className="flex-1 p-3.5 overflow-y-auto">
                     {/* Screen 1: QR Scanner */}
                     {activeStep === 1 && (
