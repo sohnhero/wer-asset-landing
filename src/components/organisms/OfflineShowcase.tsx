@@ -70,35 +70,35 @@ export function OfflineShowcase() {
           </div>
 
           {/* Right Column: Field Smartphone + Floating Sync badges */}
-          <div className="lg:col-span-6 relative flex items-center justify-center min-h-[540px]">
+          <div className="lg:col-span-6 relative flex items-center justify-center min-h-[480px] sm:min-h-[540px] mt-8 lg:mt-0">
             {/* Floating Sync Pill */}
-            <div className="absolute -left-2 sm:left-4 top-16 z-20 flex items-center gap-3 rounded-2xl border border-white/80 bg-white/95 px-4 py-3 text-brand-ink shadow-2xl backdrop-blur-md">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-teal-50 text-teal-800 border border-teal-100">
-                <Icon name="cloud" className="h-5 w-5" />
+            <div className="absolute left-1 sm:left-4 top-2 sm:top-16 z-20 flex items-center gap-2.5 sm:gap-3 rounded-2xl border border-white/80 bg-white/95 px-3 py-2 sm:px-4 sm:py-3 text-brand-ink shadow-xl backdrop-blur-md">
+              <div className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-xl bg-teal-50 text-teal-800 border border-teal-100">
+                <Icon name="cloud" className="h-4 w-4 sm:h-5 sm:w-5" />
               </div>
               <div>
-                <b className="block text-xs font-bold leading-tight">
+                <b className="block text-[11px] sm:text-xs font-bold leading-tight">
                   {fieldPhone.syncActionsCount} actions en attente
                 </b>
-                <small className="block text-[10px] text-brand-muted">
-                  Synchronisation automatique
+                <small className="block text-[9px] sm:text-[10px] text-brand-muted">
+                  Synchronisation auto
                 </small>
               </div>
-              <div className="h-4 w-4 animate-spin rounded-full border-2 border-slate-200 border-t-teal-700 ml-1" />
+              <div className="h-3.5 w-3.5 sm:h-4 sm:w-4 animate-spin rounded-full border-2 border-slate-200 border-t-teal-700 ml-1" />
             </div>
 
             {/* Floating Battery Pill */}
-            <div className="absolute -right-2 sm:right-4 bottom-16 z-20 flex flex-col rounded-2xl border border-white/80 bg-white/95 px-4 py-2.5 text-brand-ink shadow-2xl backdrop-blur-md">
-              <b className="font-sora text-sm font-bold text-teal-900 leading-tight">
+            <div className="absolute right-1 sm:right-4 bottom-2 sm:bottom-16 z-20 flex flex-col rounded-2xl border border-white/80 bg-white/95 px-3 py-2 sm:px-4 sm:py-2.5 text-brand-ink shadow-xl backdrop-blur-md">
+              <b className="font-sora text-xs sm:text-sm font-bold text-teal-900 leading-tight">
                 {fieldPhone.batteryLevel}
               </b>
-              <span className="text-[9.5px] text-brand-muted font-medium">
+              <span className="text-[8.5px] sm:text-[9.5px] text-brand-muted font-medium">
                 Fonctionnel hors réseau
               </span>
             </div>
 
             {/* Field Phone Frame */}
-            <div className="relative w-[300px] sm:w-[320px] rounded-[42px] border-4 border-slate-950 bg-slate-950 p-2.5 shadow-2xl rotate-2">
+            <div className="relative w-[280px] sm:w-[320px] rounded-[38px] sm:rounded-[42px] border-4 border-slate-950 bg-slate-950 p-2 sm:p-2.5 shadow-2xl rotate-1 sm:rotate-2">
               <div className="relative h-[520px] rounded-[34px] bg-[#f6f8f8] overflow-hidden flex flex-col text-brand-ink">
                 {/* Status Bar */}
                 <div className="flex h-8 items-center justify-between bg-teal-900 px-4 text-[9px] text-white">

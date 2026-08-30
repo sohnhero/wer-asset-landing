@@ -15,25 +15,25 @@ export function FaqSection() {
     faqSectionData;
 
   return (
-    <section id="faq" className="relative bg-[#f5f8f7] py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+    <section id="faq" className="relative bg-[#f5f8f7] py-16 sm:py-28 lg:py-32">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
           {/* Left Intro */}
           <div className="lg:col-span-5 flex flex-col items-start lg:sticky lg:top-32">
             <span className="text-xs font-extrabold tracking-widest text-teal-800 uppercase">
               {eyebrow}
             </span>
-            <h2 className="mt-3 font-sora text-3xl font-bold tracking-tight text-brand-ink sm:text-4xl lg:text-5xl">
+            <h2 className="mt-3 font-sora text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-brand-ink">
               {titlePrimary} <br />
               <span className="text-brand-muted font-normal">{titleHighlight}</span>
             </h2>
-            <p className="mt-4 text-sm md:text-base leading-relaxed text-brand-muted max-w-md">
+            <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base leading-relaxed text-brand-muted max-w-md">
               {subtitle}
             </p>
           </div>
 
           {/* Right Accordion */}
-          <div className="lg:col-span-7 divide-y divide-brand-line/80 rounded-2xl bg-white p-6 sm:p-8 shadow-sm border border-brand-line/80">
+          <div className="lg:col-span-7 divide-y divide-brand-line/80 rounded-2xl bg-white p-4 sm:p-8 shadow-sm border border-brand-line/80">
             {items.map((item) => (
               <FaqItem
                 key={item.id}

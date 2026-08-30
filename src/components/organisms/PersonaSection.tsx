@@ -14,28 +14,28 @@ export function PersonaSection() {
   const personaKeys = Object.keys(personasSectionData.personas);
 
   return (
-    <section id="solutions" className="relative bg-white py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <section id="solutions" className="relative bg-white py-16 sm:py-28 lg:py-32">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         {/* Section Heading */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 sm:mb-12">
           <div className="max-w-2xl">
             <span className="text-xs font-extrabold tracking-widest text-teal-800 uppercase">
               {personasSectionData.eyebrow}
             </span>
-            <h2 className="mt-3 font-sora text-3xl font-bold tracking-tight text-brand-ink sm:text-4xl lg:text-5xl">
+            <h2 className="mt-3 font-sora text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-brand-ink">
               {personasSectionData.titlePrimary} <br />
               <span className="text-brand-muted font-normal">
                 {personasSectionData.titleHighlight}
               </span>
             </h2>
           </div>
-          <p className="max-w-md text-sm md:text-base leading-relaxed text-brand-muted">
+          <p className="max-w-md text-xs sm:text-sm md:text-base leading-relaxed text-brand-muted">
             {personasSectionData.subtitle}
           </p>
         </div>
 
         {/* Persona Tabs Switcher */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-4 no-scrollbar">
+        <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-3 -mx-5 px-5 no-scrollbar">
           {personaKeys.map((key) => {
             const item = personasSectionData.personas[key];
             return (
@@ -44,7 +44,7 @@ export function PersonaSection() {
                 variant="pill"
                 active={activePersonaKey === key}
                 onClick={() => setActivePersonaKey(key)}
-                className="whitespace-nowrap flex-none"
+                className="whitespace-nowrap flex-none text-xs"
               >
                 {item.tabLabel}
               </TabButton>
@@ -53,8 +53,8 @@ export function PersonaSection() {
         </div>
 
         {/* Main Shell */}
-        <div className="mt-6 overflow-hidden rounded-3xl border border-brand-line/80 bg-gradient-to-br from-[#f8fbfa] to-[#eef5f4] p-8 sm:p-12 shadow-glow">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="mt-4 sm:mt-6 overflow-hidden rounded-3xl border border-brand-line/80 bg-gradient-to-br from-[#f8fbfa] to-[#eef5f4] p-5 sm:p-10 lg:p-12 shadow-glow">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left Copy */}
             <div className="lg:col-span-5 flex flex-col items-start">
               <span className="text-xs font-extrabold tracking-wider text-teal-800 uppercase">

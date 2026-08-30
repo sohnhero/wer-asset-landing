@@ -48,9 +48,9 @@ export function PilotSection() {
     pilotSectionData;
 
   return (
-    <section id="contact" className="relative bg-white py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#062f2e] via-[#0b4845] to-[#12615d] p-8 sm:p-14 lg:p-16 text-white shadow-glow">
+    <section id="contact" className="relative bg-white py-16 sm:py-28 lg:py-32">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#062f2e] via-[#0b4845] to-[#12615d] p-5 sm:p-12 lg:p-16 text-white shadow-glow">
           {/* Background Grid Pattern */}
           <div
             className="pointer-events-none absolute inset-0 opacity-10 [mask-image:linear-gradient(to_right,black,transparent)]"
@@ -60,30 +60,30 @@ export function PilotSection() {
             }}
           />
 
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
             {/* Left Copy */}
             <div className="lg:col-span-6 flex flex-col items-start">
-              <Badge variant="dark" dot className="mb-6">
+              <Badge variant="dark" dot className="mb-4 sm:mb-6">
                 {badge}
               </Badge>
 
-              <h2 className="font-sora text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl leading-tight">
+              <h2 className="font-sora text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight">
                 {titlePrimary} <br />
                 <span className="text-teal-200 font-normal">{titleHighlight}</span>
               </h2>
 
-              <p className="mt-4 text-sm md:text-base leading-relaxed text-teal-100/80 max-w-xl">
+              <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base leading-relaxed text-teal-100/80 max-w-xl">
                 {description}
               </p>
 
               {/* 3 Metrics */}
-              <div className="mt-10 grid grid-cols-3 gap-4 border-t border-white/15 pt-6 w-full">
+              <div className="mt-6 sm:mt-10 grid grid-cols-3 gap-2 sm:gap-4 border-t border-white/15 pt-5 sm:pt-6 w-full">
                 {metrics.map((metric, idx) => (
                   <div key={idx}>
-                    <strong className="block font-sora text-xl sm:text-2xl font-bold text-white">
+                    <strong className="block font-sora text-lg sm:text-2xl font-bold text-white">
                       {metric.value}
                     </strong>
-                    <small className="block text-[11px] text-teal-200/80 mt-1">
+                    <small className="block text-[10px] sm:text-[11px] text-teal-200/80 mt-0.5">
                       {metric.label}
                     </small>
                   </div>
@@ -95,7 +95,7 @@ export function PilotSection() {
             <div className="lg:col-span-6">
               <form
                 onSubmit={handleSubmit}
-                className="rounded-2xl bg-white p-6 sm:p-8 text-brand-ink shadow-2xl"
+                className="rounded-2xl bg-white p-5 sm:p-8 text-brand-ink shadow-2xl"
               >
                 <div className="mb-6">
                   <span className="text-[11px] font-extrabold tracking-widest text-teal-800 uppercase">

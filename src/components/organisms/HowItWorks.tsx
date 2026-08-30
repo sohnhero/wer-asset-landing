@@ -26,8 +26,8 @@ export function HowItWorks() {
 
         {/* Main Shell */}
         <div className="overflow-hidden rounded-3xl border border-brand-line/80 bg-gradient-to-br from-[#fbfdfc] to-[#f2f7f6] shadow-glow">
-          {/* Top Step Tabs */}
-          <div className="grid grid-cols-2 md:grid-cols-4 border-b border-brand-line bg-white/70 backdrop-blur-md">
+          {/* Top Step Tabs: 4 compact columns on mobile, line tabs on desktop */}
+          <div className="grid grid-cols-4 border-b border-brand-line bg-white/70 backdrop-blur-md">
             {[1, 2, 3, 4].map((stepNum) => {
               const step = howItWorksData.steps[stepNum];
               return (
@@ -45,7 +45,7 @@ export function HowItWorks() {
           </div>
 
           {/* Step Content: Left Copy + Right Mobile Simulation */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 p-8 sm:p-12 lg:p-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 p-5 sm:p-10 lg:p-16 items-center">
             {/* Left Copy */}
             <div className="lg:col-span-6 flex flex-col items-start">
               <span className="rounded-full border border-teal-200 bg-white px-3.5 py-1 text-xs font-bold text-teal-800 shadow-xs">
