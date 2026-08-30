@@ -22,21 +22,6 @@ export function HeaderNav({ onOpenDemo }: HeaderNavProps) {
     setMounted(true);
   }, []);
 
-  // Prevent background scroll safely on mobile
-  useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = "hidden";
-      document.body.style.touchAction = "none";
-    } else {
-      document.body.style.overflow = "";
-      document.body.style.touchAction = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-      document.body.style.touchAction = "";
-    };
-  }, [mobileMenuOpen]);
-
   const mobileNavLinks = [
     { label: "Fonctionnalités", href: "#features", num: "01", tag: "QR & TCO" },
     { label: "Comment ça marche", href: "#how", num: "02", tag: "4 étapes" },
@@ -45,26 +30,12 @@ export function HeaderNav({ onOpenDemo }: HeaderNavProps) {
     { label: "Questions Fréquentes", href: "#faq", num: "05", tag: "Pilote" },
   ];
 
-  const handleNavClick = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    href: string
-  ) => {
-    e.preventDefault();
-    setMobileMenuOpen(false);
-    setTimeout(() => {
-      const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
-    }, 150);
-  };
-
   return (
     <>
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "border-b border-brand-line/80 bg-white/90 py-3.5 shadow-xs backdrop-blur-xl"
+            ? "border-b border-brand-line/80 bg-white/95 py-3.5 shadow-xs backdrop-blur-md"
             : "bg-transparent py-4 sm:py-5"
         }`}
       >
@@ -117,11 +88,11 @@ export function HeaderNav({ onOpenDemo }: HeaderNavProps) {
         </div>
       </header>
 
-      {/* 2026 Fullscreen Mobile Menu (Mounted via React Portal directly into body for 100% viewport coverage regardless of scroll) */}
+      {/* Fullscreen Mobile Menu (Mounted via React Portal directly into body with zero touch interference) */}
       {mounted &&
         mobileMenuOpen &&
         createPortal(
-          <div className="fixed inset-0 z-[99999] h-[100dvh] w-screen bg-white text-slate-900 px-6 py-6 flex flex-col justify-between md:hidden animate-in fade-in duration-200 overflow-y-auto overscroll-contain touch-pan-y">
+          <div className="fixed inset-0 z-[99999] w-full h-full min-h-screen bg-white text-slate-900 px-6 py-6 flex flex-col justify-between md:hidden animate-in fade-in duration-150 overflow-y-auto">
             {/* Top Bar inside Menu */}
             <div className="flex items-center justify-between border-b border-slate-100 pb-4">
               <BrandLogo variant="header" />
@@ -154,7 +125,7 @@ export function HeaderNav({ onOpenDemo }: HeaderNavProps) {
                 <a
                   key={item.href}
                   href={item.href}
-                  onClick={(e) => handleNavClick(e, item.href)}
+                  onClick={() => setMobileMenuOpen(false)}
                   className="group flex items-center justify-between py-3.5 border-b border-slate-100/80 transition-colors"
                 >
                   <div className="flex items-center gap-3">
@@ -181,7 +152,7 @@ export function HeaderNav({ onOpenDemo }: HeaderNavProps) {
             <div className="space-y-2.5 pt-4 border-t border-slate-100">
               <a
                 href={headerActions.pilotHref}
-                onClick={(e) => handleNavClick(e, headerActions.pilotHref)}
+                onClick={() => setMobileMenuOpen(false)}
                 className="flex items-center justify-center gap-2 w-full rounded-2xl bg-teal-900 py-3.5 text-sm font-bold text-white shadow-md active:scale-98 transition-all"
               >
                 <span>{headerActions.pilotBtn}</span>
