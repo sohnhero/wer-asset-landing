@@ -44,7 +44,7 @@ export function HeroSection({ onOpenDemo }: HeroSectionProps) {
       <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-8">
           {/* Left Copy Column */}
-          <div className="flex flex-col items-center text-center lg:items-start lg:text-left lg:col-span-5">
+          <div className="flex flex-col items-center text-center lg:items-start lg:text-left lg:col-span-6">
             {/* Top Pill Badge with Live Emerald Indicator */}
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-teal-600/20 bg-white/90 px-3.5 py-1.5 text-[11px] sm:text-xs font-bold text-teal-900 shadow-sm backdrop-blur-md">
               <span className="relative flex h-2 w-2">
@@ -55,7 +55,7 @@ export function HeroSection({ onOpenDemo }: HeroSectionProps) {
             </div>
 
             {/* Hero Main Heading */}
-            <h1 className="font-sora text-3xl font-extrabold tracking-tight text-brand-ink sm:text-5xl lg:text-6xl lg:leading-[1.08]">
+            <h1 className="font-sora text-3xl font-extrabold tracking-tight text-brand-ink sm:text-5xl lg:text-5xl xl:text-6xl lg:leading-[1.1]">
               {heroContent.titlePrimary} <br />
               <span className="bg-gradient-to-r from-teal-900 via-teal-700 to-emerald-600 bg-clip-text text-transparent">
                 {heroContent.titleHighlight}
@@ -91,22 +91,22 @@ export function HeroSection({ onOpenDemo }: HeroSectionProps) {
               </button>
             </div>
 
-            {/* Trust Badges: Modern 2026 SaaS Micro-Cards */}
-            <div className="mt-8 grid grid-cols-3 gap-2.5 sm:gap-3.5 border-t border-brand-line/60 pt-6 w-full">
+            {/* Trust Badges: Modern 2026 SaaS Micro-Cards (Stacked for zero truncation on Desktop & Mobile) */}
+            <div className="mt-8 grid grid-cols-3 gap-2.5 sm:gap-3 border-t border-brand-line/60 pt-6 w-full">
               {heroContent.trustItems.map((item, idx) => (
                 <div
                   key={idx}
-                  className="group relative flex flex-col sm:flex-row items-center sm:items-center text-center sm:text-left gap-2 sm:gap-3 rounded-2xl border border-slate-200/90 bg-gradient-to-b from-white via-[#fcfdfd] to-[#f7f9f9] p-2.5 sm:p-3.5 shadow-xs backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-teal-400 hover:shadow-md hover:bg-white overflow-hidden"
+                  className="group relative flex flex-col items-center sm:items-start text-center sm:text-left gap-2 sm:gap-2.5 rounded-2xl border border-slate-200/90 bg-gradient-to-b from-white via-[#fcfdfd] to-[#f7f9f9] p-2.5 sm:p-3.5 shadow-xs backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-teal-400 hover:shadow-md hover:bg-white overflow-hidden"
                 >
                   <div className="pointer-events-none absolute -right-3 -top-3 h-10 w-10 rounded-full bg-teal-500/10 blur-md group-hover:bg-teal-500/25 transition-all" />
-                  <div className="flex h-8 w-8 sm:h-10 sm:w-10 flex-none items-center justify-center rounded-xl bg-gradient-to-br from-teal-950 via-teal-900 to-emerald-700 text-teal-100 shadow-xs border border-teal-800/40 transition-transform duration-300 group-hover:scale-105">
-                    <Icon name={item.icon} className="h-4 w-4 sm:h-5 sm:w-5" />
+                  <div className="flex h-8 w-8 sm:h-9 sm:w-9 flex-none items-center justify-center rounded-xl bg-gradient-to-br from-teal-950 via-teal-900 to-emerald-700 text-teal-100 shadow-xs border border-teal-800/40 transition-transform duration-300 group-hover:scale-105">
+                    <Icon name={item.icon} className="h-4 w-4 sm:h-4.5 sm:w-4.5" />
                   </div>
-                  <div className="flex flex-col min-w-0">
-                    <b className="font-sora text-[11px] sm:text-[13px] font-bold text-slate-900 group-hover:text-teal-950 transition-colors leading-tight truncate">
+                  <div className="flex flex-col min-w-0 w-full">
+                    <b className="font-sora text-xs sm:text-[13px] font-bold text-slate-900 group-hover:text-teal-950 transition-colors leading-tight">
                       {item.title}
                     </b>
-                    <span className="text-[9px] sm:text-[10.5px] text-slate-500 font-medium leading-tight mt-0.5 hidden sm:block">
+                    <span className="text-[9.5px] sm:text-[11px] text-slate-500 font-medium leading-tight mt-1 hidden sm:block">
                       {item.subtitle}
                     </span>
                   </div>
@@ -120,7 +120,7 @@ export function HeroSection({ onOpenDemo }: HeroSectionProps) {
             ref={containerRef}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            className="relative lg:col-span-7 mt-4 lg:mt-0 flex items-center justify-center"
+            className="relative lg:col-span-6 mt-4 lg:mt-0 flex items-center justify-center"
           >
             {/* MOBILE ONLY VIEW (< sm): Sleek, App-like Compact Interactive Terminal Card */}
             <div className="w-full max-w-sm rounded-3xl border border-teal-900/10 bg-white p-4 shadow-xl sm:hidden">
