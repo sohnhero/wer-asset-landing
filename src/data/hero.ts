@@ -22,7 +22,7 @@ export const heroContent = {
     {
       icon: "shield",
       title: "Traçable",
-      subtitle: "Chaque action est historisée",
+      subtitle: "Historique 100% audité",
     },
   ] as TrustItem[],
   sectorTags: [
