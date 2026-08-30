@@ -6,11 +6,10 @@ import { Icon } from "../atoms/Icon";
 import { problemSectionData } from "@/data/problems";
 
 export function ProblemSection() {
-  const [activeProblem, setActiveProblem] = useState<number>(0);
   const { eyebrow, titlePrimary, titleHighlight, subtitle, cards, valueBanner } =
     problemSectionData;
-
-  const currentCard = cards[activeProblem] || cards[0];
+  const [activeProblem, setActiveProblem] = useState(0);
+  const currentCard = cards[activeProblem];
 
   return (
     <section id="product" className="relative bg-white py-14 sm:py-24 lg:py-32">
@@ -22,14 +21,14 @@ export function ProblemSection() {
           </span>
           <h2 className="mt-2.5 font-sora text-2xl font-bold tracking-tight text-brand-ink sm:text-4xl lg:text-5xl">
             {titlePrimary} <br />
-            <span className="text-brand-muted font-normal">{titleHighlight}</span>
+            <span className="text-[#F2B01E] font-normal">{titleHighlight}</span>
           </h2>
           <p className="mt-2.5 text-xs sm:text-sm md:text-base leading-relaxed text-brand-muted">
             {subtitle}
           </p>
         </div>
 
-        {/* MOBILE ONLY (< md): Interactive Problem Switcher (Reduces height from 750px to 210px) */}
+        {/* MOBILE ONLY (< md): Interactive Problem Switcher */}
         <div className="md:hidden mt-6">
           {/* 3 Symmetrical Problem Tabs */}
           <div className="grid grid-cols-3 gap-1 p-1 bg-slate-100/90 rounded-2xl border border-brand-line mb-3">
@@ -40,13 +39,13 @@ export function ProblemSection() {
                   key={idx}
                   type="button"
                   onClick={() => setActiveProblem(idx)}
-                  className={`flex items-center justify-center gap-1.5 py-2 px-1 rounded-xl text-center transition-all ${
+                  className={`flex flex-col items-center justify-center py-2 px-1 rounded-xl transition-all duration-200 text-center ${
                     isActive
-                      ? "bg-teal-900 text-white shadow-sm font-bold"
-                      : "text-brand-muted hover:text-brand-ink"
+                      ? "bg-white text-teal-950 font-bold shadow-sm"
+                      : "text-slate-500 font-normal hover:text-slate-900"
                   }`}
                 >
-                  <span className={`text-[9.5px] font-extrabold ${isActive ? "text-teal-200" : "text-brand-muted"}`}>
+                  <span className="text-[10px] font-bold text-teal-700">
                     {card.number}
                   </span>
                   <span className="text-[10.5px] truncate max-w-full font-medium">
@@ -58,74 +57,71 @@ export function ProblemSection() {
           </div>
 
           {/* Active Mobile Problem Card */}
-          <article className="relative flex flex-col justify-between rounded-3xl border border-brand-line/80 bg-gradient-to-b from-white to-[#fbfcfc] p-5 shadow-xs overflow-hidden min-h-[175px]">
-            <span className="absolute right-4 top-3 font-sora text-3xl font-black text-slate-100 select-none">
-              {currentCard.number}
-            </span>
-
+          <article className="relative flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-gradient-to-b from-white to-[#fbfcfc] p-5 shadow-xs overflow-hidden">
             <div>
-              <div className="mb-2.5 flex h-8 w-8 items-center justify-center rounded-xl border border-teal-100 bg-teal-50 text-teal-800 shadow-xs">
-                <Icon name={currentCard.icon} className="h-4 w-4" />
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-teal-950 via-teal-900 to-teal-800 text-teal-100 shadow-xs border border-teal-800/40">
+                  <Icon name={currentCard.icon} className="h-4 w-4" />
+                </div>
+                <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-[10px] font-bold text-slate-600 border border-slate-200/60">
+                  {currentCard.tag}
+                </span>
               </div>
-              <h3 className="font-sora text-base font-bold text-brand-ink leading-snug">
+
+              <h3 className="font-sora text-base font-bold text-slate-900 leading-snug">
                 {currentCard.title}
               </h3>
-              <p className="mt-1.5 text-xs leading-relaxed text-brand-muted">
+              <p className="mt-2 text-xs leading-relaxed text-slate-600">
                 {currentCard.description}
               </p>
             </div>
 
-            {/* Progress Line */}
-            <div className="mt-4 h-1 w-full rounded-full bg-slate-100 overflow-hidden">
-              <div
-                style={{ width: currentCard.progressWidth }}
-                className={`h-full rounded-full ${
-                  currentCard.severityColor === "teal"
-                    ? "bg-teal-600"
-                    : currentCard.severityColor === "amber"
-                    ? "bg-gold"
-                    : "bg-rose-500"
-                }`}
-              />
+            {/* Clear Consequence Chip (Replaced confusing progress bar) */}
+            <div className="mt-4 rounded-xl border border-amber-200/80 bg-amber-50/70 p-2.5 flex items-center gap-2">
+              <span className="flex h-5 w-5 flex-none items-center justify-center rounded-md bg-amber-100 text-amber-800 text-[10px] font-bold">
+                ⚠
+              </span>
+              <span className="text-[11px] font-semibold text-amber-900 leading-tight">
+                Impact : {currentCard.impact}
+              </span>
             </div>
           </article>
         </div>
 
-        {/* DESKTOP ONLY (md+): 3 Problem Cards Grid Side-by-Side */}
+        {/* DESKTOP ONLY (md+): 3 High-End Problem Cards Grid */}
         <div className="hidden md:grid mt-12 lg:mt-16 grid-cols-3 gap-6">
           {cards.map((card, idx) => (
             <article
               key={idx}
-              className="relative flex flex-col justify-between rounded-3xl border border-brand-line/80 bg-gradient-to-b from-white to-[#fbfcfc] p-6 sm:p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-teal-200 hover:shadow-card overflow-hidden min-h-[280px]"
+              className="group relative flex flex-col justify-between rounded-3xl border border-slate-200/90 bg-gradient-to-b from-white via-[#fcfdfd] to-[#f8faf9] p-6 sm:p-7 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-teal-300 hover:shadow-md overflow-hidden min-h-[290px]"
             >
-              <span className="absolute right-5 top-4 font-sora text-4xl font-black text-slate-100 select-none">
-                {card.number}
-              </span>
-
               <div>
-                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl border border-teal-100 bg-teal-50 text-teal-800 shadow-xs">
-                  <Icon name={card.icon} className="h-6 w-6" />
+                {/* Card Header: Icon + Category Badge */}
+                <div className="flex items-center justify-between mb-5">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-teal-950 via-teal-900 to-teal-800 text-teal-100 shadow-xs border border-teal-800/40 group-hover:scale-105 transition-transform">
+                    <Icon name={card.icon} className="h-5 w-5" />
+                  </div>
+                  <span className="rounded-full bg-slate-100/90 px-3 py-1 text-[11px] font-bold text-slate-600 border border-slate-200/60">
+                    {card.tag}
+                  </span>
                 </div>
-                <h3 className="font-sora text-lg font-bold text-brand-ink leading-snug">
+
+                <h3 className="font-sora text-lg font-bold text-slate-900 leading-snug group-hover:text-teal-950 transition-colors">
                   {card.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-brand-muted">
+                <p className="mt-2.5 text-xs sm:text-sm leading-relaxed text-slate-600">
                   {card.description}
                 </p>
               </div>
 
-              {/* Progress Line */}
-              <div className="mt-6 h-1 w-full rounded-full bg-slate-100 overflow-hidden">
-                <div
-                  style={{ width: card.progressWidth }}
-                  className={`h-full rounded-full ${
-                    card.severityColor === "teal"
-                      ? "bg-teal-600"
-                      : card.severityColor === "amber"
-                      ? "bg-gold"
-                      : "bg-rose-500"
-                  }`}
-                />
+              {/* Concrete Impact Consequence Pill (Zero confusion) */}
+              <div className="mt-6 rounded-xl border border-amber-200/80 bg-amber-50/70 p-3 flex items-center gap-2.5 transition-colors group-hover:bg-amber-50">
+                <span className="flex h-5 w-5 flex-none items-center justify-center rounded-md bg-amber-100 text-amber-800 text-[11px] font-bold">
+                  ⚠
+                </span>
+                <span className="text-xs font-semibold text-amber-950 leading-tight">
+                  Impact : {card.impact}
+                </span>
               </div>
             </article>
           ))}
@@ -160,7 +156,7 @@ export function ProblemSection() {
               </div>
             </div>
 
-            {/* Flow sequence - 100% visible and adaptive on all mobile and desktop screens */}
+            {/* Flow sequence */}
             <div className="flex items-center justify-between w-full lg:w-auto gap-1 sm:gap-2 pt-1 sm:pt-0">
               {valueBanner.flowSteps.map((step, idx) => (
                 <React.Fragment key={idx}>

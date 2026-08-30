@@ -26,24 +26,34 @@ export function FaqSection() {
             </span>
             <h2 className="mt-2.5 font-sora text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-brand-ink">
               {titlePrimary} <br />
-              <span className="text-brand-muted font-normal">{titleHighlight}</span>
+              <span className="text-[#F2B01E] font-normal">{titleHighlight}</span>
             </h2>
             <p className="mt-2.5 sm:mt-4 text-xs sm:text-sm md:text-base leading-relaxed text-brand-muted max-w-md">
               {subtitle}
             </p>
 
             {/* Direct Support Card on Desktop */}
-            <div className="hidden lg:flex items-center gap-3 mt-8 p-4 rounded-2xl border border-brand-line bg-white shadow-xs">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-teal-50 text-teal-800 border border-teal-100">
-                <Icon name="chat" className="h-5 w-5" />
+            <a
+              href="#contact"
+              className="group hidden lg:flex items-center justify-between gap-4 mt-8 p-4 rounded-2xl border border-slate-200/90 bg-gradient-to-br from-white via-[#fcfdfd] to-[#f4f8f6] shadow-xs hover:shadow-md hover:border-teal-400/80 transition-all duration-300 -translate-y-0 hover:-translate-y-0.5 max-w-sm w-full"
+            >
+              <div className="flex items-center gap-3.5">
+                <div className="flex h-11 w-11 flex-none items-center justify-center rounded-xl bg-gradient-to-br from-teal-950 via-teal-900 to-teal-800 text-teal-100 shadow-xs border border-teal-800/40 group-hover:scale-105 transition-transform">
+                  <Icon name="chat" className="h-5 w-5" />
+                </div>
+                <div>
+                  <b className="block text-xs sm:text-sm font-bold text-slate-900 leading-tight group-hover:text-teal-950 transition-colors">
+                    Autre question ?
+                  </b>
+                  <span className="block text-[11px] text-slate-500 mt-0.5 font-medium">
+                    Discutez avec notre équipe
+                  </span>
+                </div>
               </div>
-              <div>
-                <b className="block text-xs font-bold text-brand-ink">Autre question ?</b>
-                <a href="#contact" className="text-[11px] font-semibold text-teal-800 hover:underline">
-                  Discutez avec notre équipe →
-                </a>
-              </div>
-            </div>
+              <span className="flex h-8 w-8 flex-none items-center justify-center rounded-lg bg-teal-50 text-teal-900 border border-teal-200/60 group-hover:bg-teal-900 group-hover:text-white transition-all shadow-xs">
+                <Icon name="arrow" className="h-3.5 w-3.5 transform group-hover:translate-x-0.5 transition-transform" />
+              </span>
+            </a>
           </div>
 
           {/* Right Accordion Cards */}
@@ -59,6 +69,31 @@ export function FaqSection() {
                 onToggle={() => toggleFaq(item.id)}
               />
             ))}
+
+            {/* Mobile Direct Support Card */}
+            <div className="lg:hidden mt-5 pt-2">
+              <a
+                href="#contact"
+                className="group flex items-center justify-between gap-3 p-3.5 rounded-2xl border border-slate-200/90 bg-gradient-to-br from-white to-[#f4f8f6] shadow-xs hover:border-teal-400 transition-all"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 flex-none items-center justify-center rounded-xl bg-gradient-to-br from-teal-950 to-teal-800 text-teal-100 shadow-xs">
+                    <Icon name="chat" className="h-4 w-4" />
+                  </div>
+                  <div>
+                    <b className="block text-xs font-bold text-slate-900 leading-tight">
+                      Autre question ?
+                    </b>
+                    <span className="block text-[10.5px] text-slate-500 mt-0.5">
+                      Discutez avec notre équipe
+                    </span>
+                  </div>
+                </div>
+                <span className="flex h-7 w-7 flex-none items-center justify-center rounded-lg bg-teal-50 text-teal-900 border border-teal-200/60">
+                  <Icon name="arrow" className="h-3 w-3" />
+                </span>
+              </a>
+            </div>
           </div>
         </div>
       </div>

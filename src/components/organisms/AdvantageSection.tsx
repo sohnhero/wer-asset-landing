@@ -16,7 +16,7 @@ export function AdvantageSection() {
           </span>
           <h2 className="mt-2.5 font-sora text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-brand-ink">
             {titlePrimary} <br />
-            <span className="text-brand-muted font-normal">{titleHighlight}</span>
+            <span className="text-[#F2B01E] font-normal">{titleHighlight}</span>
           </h2>
         </div>
 

@@ -13,8 +13,8 @@ export const problemSectionData = {
       title: "Les pannes arrivent sans contexte",
       description:
         "Dernière intervention, garantie, pièce remplacée, coût cumulé : l'information est souvent introuvable au moment où elle compte.",
-      severityColor: "teal",
-      progressWidth: "70%",
+      tag: "Manque d'historique",
+      impact: "Diagnostic ralenti & erreurs récurrentes",
     },
     {
       number: "02",
@@ -22,8 +22,8 @@ export const problemSectionData = {
       title: "Le préventif est oublié",
       description:
         "Les échéances sont suivies manuellement, les compteurs ne sont pas consolidés et une maintenance retardée devient une panne coûteuse.",
-      severityColor: "amber",
-      progressWidth: "55%",
+      tag: "Suivi manuel aléatoire",
+      impact: "Arrêts d'activité imprévus",
     },
     {
       number: "03",
@@ -31,8 +31,8 @@ export const problemSectionData = {
       title: "Les coûts restent invisibles",
       description:
         "Sans historique fiable, difficile de savoir quel équipement coûte trop cher, quel prestataire respecte son SLA ou quand remplacer un actif.",
-      severityColor: "red",
-      progressWidth: "82%",
+      tag: "Zéro visibilité TCO",
+      impact: "Budgets de maintenance incontrôlés",
     },
   ] as ProblemItem[],
   valueBanner: {

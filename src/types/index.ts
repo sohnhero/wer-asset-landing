@@ -14,8 +14,10 @@ export interface ProblemItem {
   icon: string;
   title: string;
   description: string;
-  severityColor: "teal" | "amber" | "red";
-  progressWidth: string;
+  tag?: string;
+  impact?: string;
+  severityColor?: "teal" | "amber" | "red";
+  progressWidth?: string;
 }
 
 export interface BentoFeature {

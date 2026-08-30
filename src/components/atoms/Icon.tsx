@@ -31,6 +31,8 @@ import {
   Coins,
   Banknote,
   Wallet,
+  MessageSquare,
+  HelpCircle,
 } from "lucide-react";
 
 interface IconProps {
@@ -113,6 +115,13 @@ export function Icon({ name, className = "w-5 h-5", size }: IconProps) {
       return <Banknote {...props} />;
     case "wallet":
       return <Wallet {...props} />;
+    case "chat":
+    case "message":
+    case "messagesquare":
+      return <MessageSquare {...props} />;
+    case "help":
+    case "help-circle":
+      return <HelpCircle {...props} />;
     default:
       return <Check {...props} />;
   }

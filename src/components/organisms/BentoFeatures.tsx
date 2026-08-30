@@ -31,7 +31,7 @@ export function BentoFeatures() {
             </span>
             <h2 className="mt-3 font-sora text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-brand-ink">
               {titlePrimary} <br />
-              <span className="text-brand-muted font-normal">{titleHighlight}</span>
+              <span className="text-[#F2B01E] font-normal">{titleHighlight}</span>
             </h2>
           </div>
           <p className="max-w-md text-xs sm:text-sm md:text-base leading-relaxed text-brand-muted">
