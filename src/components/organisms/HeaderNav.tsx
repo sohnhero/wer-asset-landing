@@ -25,9 +25,8 @@ export function HeaderNav({ onOpenDemo }: HeaderNavProps) {
   const mobileNavLinks = [
     { label: "Fonctionnalités", href: "#features", num: "01", tag: "QR & TCO" },
     { label: "Comment ça marche", href: "#how", num: "02", tag: "4 étapes" },
-    { label: "Solutions Métiers", href: "#solutions", num: "03", tag: "Rôles" },
-    { label: "Offres & Tarifs", href: "#pricing", num: "04", tag: "FCFA" },
-    { label: "Questions Fréquentes", href: "#faq", num: "05", tag: "Pilote" },
+    { label: "Offres & Tarifs", href: "#pricing", num: "03", tag: "FCFA" },
+    { label: "Questions Fréquentes", href: "#faq", num: "04", tag: "Pilote" },
   ];
 
   return (

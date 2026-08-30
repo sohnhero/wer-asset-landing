@@ -31,7 +31,7 @@ export function LandingTemplate() {
         <BentoFeatures />
         <HowItWorks />
         <OfflineShowcase />
-        <PersonaSection />
+        {/* PersonaSection hidden upon user request */}
         <AdvantageSection />
         <PricingSection />
         <PilotSection />
