@@ -88,21 +88,31 @@ export function DemoModal({ isOpen, onClose }: DemoModalProps) {
         <div className="grid grid-cols-4 gap-1 p-1 max-w-lg mx-auto w-full rounded-2xl border border-brand-line bg-white mb-4 shadow-xs">
           {demoModalData.steps.map((step) => {
             const isActive = activeTab === step.id;
+            const mobileLabel =
+              step.id === "scan"
+                ? "Scan"
+                : step.id === "ticket"
+                ? "Ticket"
+                : step.id === "work"
+                ? "Travail"
+                : "Suivi";
+
             return (
               <button
                 key={step.id}
                 type="button"
                 onClick={() => setActiveTab(step.id)}
-                className={`flex items-center justify-center gap-1 sm:gap-1.5 rounded-xl py-1.5 sm:py-2 text-[10.5px] sm:text-xs font-bold transition-all ${
+                className={`flex items-center justify-center gap-1 sm:gap-1.5 rounded-xl py-1.5 sm:py-2 text-[10px] sm:text-xs font-bold transition-all ${
                   isActive
                     ? "bg-teal-900 text-white shadow-sm font-extrabold"
                     : "text-brand-muted hover:text-brand-ink"
                 }`}
               >
-                <span className={`text-[9px] sm:text-[10px] ${isActive ? "text-teal-200" : "opacity-60"}`}>
+                <span className={`text-[8.5px] sm:text-[10px] font-extrabold ${isActive ? "text-teal-200" : "opacity-60"}`}>
                   {step.stepNumber}
                 </span>
-                <span className="truncate">{step.label}</span>
+                <span className="sm:hidden">{mobileLabel}</span>
+                <span className="hidden sm:inline">{step.label}</span>
               </button>
             );
           })}
