@@ -28,6 +28,9 @@ import {
   AlertCircle,
   TrendingDown,
   TrendingUp,
+  Coins,
+  Banknote,
+  Wallet,
 } from "lucide-react";
 
 interface IconProps {
@@ -102,6 +105,14 @@ export function Icon({ name, className = "w-5 h-5", size }: IconProps) {
       return <TrendingDown {...props} />;
     case "trending-up":
       return <TrendingUp {...props} />;
+    case "coins":
+    case "money":
+    case "argent":
+      return <Coins {...props} />;
+    case "banknote":
+      return <Banknote {...props} />;
+    case "wallet":
+      return <Wallet {...props} />;
     default:
       return <Check {...props} />;
   }

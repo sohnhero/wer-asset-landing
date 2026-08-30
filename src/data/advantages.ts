@@ -30,8 +30,7 @@ export const advantagesSectionData = {
         "Alertes push, email et WhatsApp directement sur les canaux utilisés par vos équipes au quotidien.",
     },
     {
-      icon: "money",
-      isCurrency: true,
+      icon: "coins",
       title: "Facturation locale",
       tag: "FCFA",
       highlight: "Paiements locaux",

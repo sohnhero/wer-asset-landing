@@ -17,7 +17,6 @@ export function AdvantageCard({
   description,
   tag,
   highlight,
-  isCurrency = false,
   className = "",
 }: AdvantageCardProps) {
   return (
@@ -31,13 +30,7 @@ export function AdvantageCard({
         {/* Top Header: Icon Container + Category Tag */}
         <div className="flex items-center justify-between gap-2 mb-3 sm:mb-4">
           <div className="flex h-9 w-9 sm:h-11 sm:w-11 items-center justify-center rounded-xl sm:rounded-2xl bg-gradient-to-br from-teal-950 via-teal-900 to-emerald-700 text-white shadow-sm border border-teal-800/40 transition-transform duration-300 group-hover:scale-105">
-            {isCurrency ? (
-              <span className="font-sora text-xs sm:text-base font-black tracking-tight text-teal-100">
-                F
-              </span>
-            ) : (
-              <Icon name={icon} className="h-4 w-4 sm:h-5 sm:w-5 text-teal-100" />
-            )}
+            <Icon name={icon} className="h-4 w-4 sm:h-5 sm:w-5 text-teal-100" />
           </div>
 
           {tag && (
