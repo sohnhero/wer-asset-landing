@@ -31,20 +31,19 @@ export function PricingSection() {
 
         {/* MOBILE ONLY (< sm): Interactive Pricing Switcher (Eliminates 1,500px of scrolling) */}
         <div className="sm:hidden">
-          {/* Mobile Plan Tabs */}
-          <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-3 mb-4 -mx-5 px-5">
+          {/* Mobile Plan Segmented Tabs - Zero Horizontal Scroll */}
+          <div className="grid grid-cols-4 gap-1 p-1 bg-slate-100 rounded-2xl border border-brand-line mb-4">
             {plans.map((plan) => (
               <button
                 key={plan.id}
                 type="button"
                 onClick={() => setSelectedMobilePlan(plan.id)}
-                className={`flex items-center gap-1 rounded-full px-3.5 py-2 text-xs font-bold whitespace-nowrap transition-all shadow-xs ${
+                className={`flex items-center justify-center gap-1 rounded-xl py-2 text-[11px] font-bold transition-all ${
                   selectedMobilePlan === plan.id
-                    ? "bg-teal-900 text-white shadow-md"
-                    : "bg-slate-50 text-brand-muted border border-brand-line"
+                    ? "bg-teal-900 text-white shadow-sm font-extrabold"
+                    : "text-brand-muted hover:text-brand-ink"
                 }`}
               >
-                {plan.isFeatured && <span>⭐</span>}
                 <span>{plan.name}</span>
               </button>
             ))}

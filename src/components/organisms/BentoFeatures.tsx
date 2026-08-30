@@ -39,18 +39,18 @@ export function BentoFeatures() {
           </p>
         </div>
 
-        {/* MOBILE ONLY (< lg): Interactive Feature Switcher (Replaces 2,500px of scrolling with a single engaging 400px card) */}
+        {/* MOBILE ONLY (< lg): Interactive Feature Switcher (Zero Horizontal Scroll) */}
         <div className="lg:hidden">
-          {/* Mobile Horizontal Pill Switcher */}
-          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-3 mb-4 -mx-5 px-5">
+          {/* Mobile Wrap Pill Switcher */}
+          <div className="flex flex-wrap items-center gap-2 mb-5">
             {mobileTabs.map((tab) => (
               <button
                 key={tab.id}
                 type="button"
                 onClick={() => setActiveMobileTab(tab.id)}
-                className={`flex items-center gap-1.5 rounded-full px-3.5 py-2 text-xs font-bold whitespace-nowrap transition-all duration-200 shadow-xs ${
+                className={`flex items-center gap-1.5 rounded-full px-3.5 py-2 text-xs font-bold transition-all duration-200 shadow-xs ${
                   activeMobileTab === tab.id
-                    ? "bg-teal-900 text-white shadow-md"
+                    ? "bg-teal-900 text-white shadow-md scale-[1.02]"
                     : "bg-white text-brand-muted border border-brand-line hover:border-teal-300"
                 }`}
               >

@@ -1,6 +1,4 @@
-"use client";
-
-import React, { useState, useRef } from "react";
+import React from "react";
 import Image from "next/image";
 import { Icon } from "../atoms/Icon";
 import { problemSectionData } from "@/data/problems";
@@ -8,16 +6,6 @@ import { problemSectionData } from "@/data/problems";
 export function ProblemSection() {
   const { eyebrow, titlePrimary, titleHighlight, subtitle, cards, valueBanner } =
     problemSectionData;
-  const [activeMobileCard, setActiveMobileCard] = useState(0);
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  const handleScroll = () => {
-    if (!scrollRef.current) return;
-    const scrollLeft = scrollRef.current.scrollLeft;
-    const cardWidth = scrollRef.current.offsetWidth * 0.85;
-    const index = Math.round(scrollLeft / cardWidth);
-    setActiveMobileCard(Math.min(index, cards.length - 1));
-  };
 
   return (
     <section id="product" className="relative bg-white py-16 sm:py-28 lg:py-32">
@@ -36,98 +24,31 @@ export function ProblemSection() {
           </p>
         </div>
 
-        {/* MOBILE ONLY (< md): Horizontal Snap Carousel (Eliminates vertical scroll fatigue) */}
-        <div className="mt-10 md:hidden">
-          <div
-            ref={scrollRef}
-            onScroll={handleScroll}
-            className="flex overflow-x-auto snap-x snap-mandatory gap-3.5 pb-2 -mx-5 px-5 no-scrollbar"
-          >
-            {cards.map((card, idx) => (
-              <article
-                key={idx}
-                className="relative flex-none w-[82vw] max-w-[320px] snap-center flex flex-col justify-between rounded-3xl border border-brand-line/80 bg-gradient-to-b from-white to-[#fbfcfc] p-6 shadow-sm min-h-[260px]"
-              >
-                <span className="absolute right-5 top-4 font-sora text-3xl font-black text-slate-100 select-none">
-                  {card.number}
-                </span>
-
-                <div>
-                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl border border-teal-100 bg-teal-50 text-teal-800 shadow-xs">
-                    <Icon name={card.icon} className="h-5 w-5" />
-                  </div>
-                  <h3 className="font-sora text-base font-bold text-brand-ink leading-snug">
-                    {card.title}
-                  </h3>
-                  <p className="mt-2 text-xs leading-relaxed text-brand-muted">
-                    {card.description}
-                  </p>
-                </div>
-
-                {/* Progress Line */}
-                <div className="mt-4 h-1 w-full rounded-full bg-slate-100 overflow-hidden">
-                  <div
-                    style={{ width: card.progressWidth }}
-                    className={`h-full rounded-full ${
-                      card.severityColor === "teal"
-                        ? "bg-teal-600"
-                        : card.severityColor === "amber"
-                        ? "bg-gold"
-                        : "bg-rose-500"
-                    }`}
-                  />
-                </div>
-              </article>
-            ))}
-          </div>
-
-          {/* Mobile Pagination Dots */}
-          <div className="mt-3 flex items-center justify-center gap-1.5">
-            {cards.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => {
-                  if (scrollRef.current) {
-                    scrollRef.current.scrollTo({
-                      left: idx * (scrollRef.current.offsetWidth * 0.85),
-                      behavior: "smooth",
-                    });
-                  }
-                }}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
-                  activeMobileCard === idx ? "w-6 bg-teal-800" : "w-1.5 bg-slate-200"
-                }`}
-                aria-label={`Voir problème ${idx + 1}`}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* TABLET & DESKTOP (md+): Full 3-column Grid */}
-        <div className="mt-16 hidden md:grid md:grid-cols-3 gap-6">
+        {/* 3 Problem Cards Grid - Zero Horizontal Scroll */}
+        <div className="mt-10 sm:mt-16 grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
           {cards.map((card, idx) => (
             <article
               key={idx}
-              className="relative flex flex-col justify-between rounded-3xl border border-brand-line/80 bg-gradient-to-b from-white to-[#fbfcfc] p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-teal-200 hover:shadow-card overflow-hidden min-h-[280px]"
+              className="relative flex flex-col justify-between rounded-3xl border border-brand-line/80 bg-gradient-to-b from-white to-[#fbfcfc] p-6 sm:p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-teal-200 hover:shadow-card overflow-hidden min-h-[240px] sm:min-h-[280px]"
             >
-              <span className="absolute right-6 top-5 font-sora text-4xl font-black text-slate-100 select-none">
+              <span className="absolute right-5 top-4 font-sora text-3xl sm:text-4xl font-black text-slate-100 select-none">
                 {card.number}
               </span>
 
               <div>
-                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl border border-teal-100 bg-teal-50 text-teal-800 shadow-xs">
-                  <Icon name={card.icon} className="h-6 w-6" />
+                <div className="mb-4 sm:mb-6 flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-2xl border border-teal-100 bg-teal-50 text-teal-800 shadow-xs">
+                  <Icon name={card.icon} className="h-5 w-5 sm:h-6 sm:w-6" />
                 </div>
-                <h3 className="font-sora text-lg font-bold text-brand-ink leading-snug">
+                <h3 className="font-sora text-base sm:text-lg font-bold text-brand-ink leading-snug">
                   {card.title}
                 </h3>
-                <p className="mt-3 text-xs md:text-sm leading-relaxed text-brand-muted">
+                <p className="mt-2 sm:mt-3 text-xs sm:text-sm leading-relaxed text-brand-muted">
                   {card.description}
                 </p>
               </div>
 
               {/* Progress Line */}
-              <div className="mt-6 h-1 w-full rounded-full bg-slate-100 overflow-hidden">
+              <div className="mt-5 sm:mt-6 h-1 w-full rounded-full bg-slate-100 overflow-hidden">
                 <div
                   style={{ width: card.progressWidth }}
                   className={`h-full rounded-full ${

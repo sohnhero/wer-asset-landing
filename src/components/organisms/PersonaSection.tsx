@@ -34,8 +34,8 @@ export function PersonaSection() {
           </p>
         </div>
 
-        {/* Persona Tabs Switcher */}
-        <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-3 -mx-5 px-5 no-scrollbar">
+        {/* Persona Tabs Switcher - Zero Horizontal Scroll */}
+        <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-4">
           {personaKeys.map((key) => {
             const item = personasSectionData.personas[key];
             return (
@@ -44,7 +44,7 @@ export function PersonaSection() {
                 variant="pill"
                 active={activePersonaKey === key}
                 onClick={() => setActivePersonaKey(key)}
-                className="whitespace-nowrap flex-none text-xs"
+                className="text-xs font-bold"
               >
                 {item.tabLabel}
               </TabButton>
