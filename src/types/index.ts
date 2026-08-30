@@ -74,6 +74,8 @@ export interface AdvantageItem {
   icon: string;
   title: string;
   description: string;
+  tag?: string;
+  highlight?: string;
   isCurrency?: boolean;
 }
 

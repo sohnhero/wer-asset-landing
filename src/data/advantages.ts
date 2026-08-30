@@ -8,27 +8,35 @@ export const advantagesSectionData = {
     {
       icon: "mobile",
       title: "Mobile d'abord",
+      tag: "Terrain",
+      highlight: "Prise en main < 5 min",
       description:
-        "Des parcours courts et lisibles pour des utilisateurs terrain qui n'ont pas besoin d'être experts du logiciel.",
+        "Des parcours courts et lisibles pour des techniciens qui n'ont pas besoin d'être experts du logiciel.",
     },
     {
       icon: "cloud",
       title: "Hors ligne",
+      tag: "Offline",
+      highlight: "Sync automatique",
       description:
-        "Le technicien reste opérationnel dans les locaux techniques et sous-sols où le réseau est faible ou absent.",
+        "Opérationnel dans les sous-sols et chambres froides où le réseau mobile est faible ou absent.",
     },
     {
       icon: "bell",
       title: "Notifications utiles",
+      tag: "WhatsApp",
+      highlight: "Temps réel",
       description:
-        "Application, email et WhatsApp pour toucher l'utilisateur sur les canaux réellement utilisés au quotidien.",
+        "Alertes push, email et WhatsApp directement sur les canaux utilisés par vos équipes au quotidien.",
     },
     {
       icon: "money",
       isCurrency: true,
       title: "Facturation locale",
+      tag: "FCFA",
+      highlight: "Paiements locaux",
       description:
-        "Tarification en FCFA et intégration prévue des moyens de paiement adaptés aux entreprises sénégalaises.",
+        "Tarification en FCFA et intégration des moyens de paiement adaptés aux entreprises sénégalaises.",
     },
   ] as AdvantageItem[],
 };

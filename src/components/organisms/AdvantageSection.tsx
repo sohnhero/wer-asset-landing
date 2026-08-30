@@ -28,6 +28,8 @@ export function AdvantageSection() {
               icon={adv.icon}
               title={adv.title}
               description={adv.description}
+              tag={adv.tag}
+              highlight={adv.highlight}
               isCurrency={adv.isCurrency}
             />
           ))}
