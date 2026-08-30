@@ -22,18 +22,18 @@ export function HeaderNav({ onOpenDemo }: HeaderNavProps) {
     setMounted(true);
   }, []);
 
-  // Prevent background scroll when mobile menu is open
+  // Prevent background scroll safely on mobile
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = "hidden";
-      document.documentElement.style.overflow = "hidden";
+      document.body.style.touchAction = "none";
     } else {
       document.body.style.overflow = "";
-      document.documentElement.style.overflow = "";
+      document.body.style.touchAction = "";
     }
     return () => {
       document.body.style.overflow = "";
-      document.documentElement.style.overflow = "";
+      document.body.style.touchAction = "";
     };
   }, [mobileMenuOpen]);
 
@@ -121,7 +121,7 @@ export function HeaderNav({ onOpenDemo }: HeaderNavProps) {
       {mounted &&
         mobileMenuOpen &&
         createPortal(
-          <div className="fixed inset-0 z-[99999] h-[100dvh] w-screen bg-white text-slate-900 px-6 py-6 flex flex-col justify-between md:hidden animate-in fade-in duration-200 overflow-y-auto">
+          <div className="fixed inset-0 z-[99999] h-[100dvh] w-screen bg-white text-slate-900 px-6 py-6 flex flex-col justify-between md:hidden animate-in fade-in duration-200 overflow-y-auto overscroll-contain touch-pan-y">
             {/* Top Bar inside Menu */}
             <div className="flex items-center justify-between border-b border-slate-100 pb-4">
               <BrandLogo variant="header" />
