@@ -33,181 +33,191 @@ export function DemoModal({ isOpen, onClose }: DemoModalProps) {
   if (!isOpen) return null;
 
   const currentStep = demoModalData.steps.find((s) => s.id === activeTab) || demoModalData.steps[0];
+  const stepIds: ("scan" | "ticket" | "work" | "history")[] = ["scan", "ticket", "work", "history"];
+  const currentStepIndex = stepIds.indexOf(activeTab);
+
+  const handleNext = () => {
+    if (currentStepIndex < stepIds.length - 1) {
+      setActiveTab(stepIds[currentStepIndex + 1]);
+    } else {
+      onClose();
+      const contactEl = document.getElementById("contact");
+      if (contactEl) contactEl.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <div
       role="dialog"
       aria-modal="true"
       aria-labelledby="demo-modal-title"
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6"
     >
       {/* Backdrop */}
       <div
         onClick={onClose}
-        className="absolute inset-0 bg-[#051c1b]/70 backdrop-blur-md transition-opacity"
+        className="absolute inset-0 bg-[#051c1b]/75 backdrop-blur-md transition-opacity"
       />
 
       {/* Modal Dialog Box */}
-      <div className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl border border-white/40 bg-[#f6f9f8] p-6 sm:p-10 shadow-2xl z-10">
+      <div className="relative w-full max-w-4xl max-h-[92vh] flex flex-col rounded-3xl border border-white/40 bg-[#f6f9f8] p-4 sm:p-8 shadow-2xl z-10 overflow-y-auto">
         {/* Close Button */}
         <button
           onClick={onClose}
           type="button"
           aria-label="Fermer l'aperçu"
-          className="absolute right-6 top-6 flex h-10 w-10 items-center justify-center rounded-xl border border-brand-line bg-white text-brand-muted hover:text-brand-ink shadow-xs transition-colors"
+          className="absolute right-4 top-4 sm:right-6 sm:top-6 flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-full sm:rounded-xl border border-brand-line bg-white text-brand-muted hover:text-brand-ink shadow-xs transition-colors z-20"
         >
-          <Icon name="close" className="h-5 w-5" />
+          <Icon name="close" className="h-4 w-4 sm:h-5 sm:w-5" />
         </button>
 
         {/* Modal Heading */}
-        <div className="text-center max-w-lg mx-auto mb-8">
-          <span className="text-[11px] font-extrabold tracking-widest text-teal-800 uppercase">
+        <div className="text-center max-w-lg mx-auto mb-3 sm:mb-6 pr-8 pl-2 sm:px-0">
+          <span className="text-[10px] sm:text-[11px] font-extrabold tracking-widest text-teal-800 uppercase">
             {demoModalData.eyebrow}
           </span>
-          <h3 id="demo-modal-title" className="mt-1 font-sora text-2xl sm:text-3xl font-bold text-brand-ink">
+          <h3 id="demo-modal-title" className="mt-0.5 font-sora text-lg sm:text-2xl lg:text-3xl font-bold text-brand-ink">
             {demoModalData.title}
           </h3>
-          <p className="mt-2 text-xs md:text-sm text-brand-muted">
+          <p className="mt-0.5 text-[11px] sm:text-xs text-brand-muted">
             {demoModalData.subtitle}
           </p>
         </div>
 
-        {/* Step Selector Tabs */}
-        <div className="grid grid-cols-4 gap-1.5 max-w-xl mx-auto rounded-2xl border border-brand-line bg-white p-1.5 mb-8 shadow-xs">
-          {demoModalData.steps.map((step) => (
-            <button
-              key={step.id}
-              onClick={() => setActiveTab(step.id)}
-              className={`flex items-center justify-center gap-1.5 rounded-xl py-2.5 text-xs font-bold transition-all ${
-                activeTab === step.id
-                  ? "bg-teal-900 text-white shadow-sm"
-                  : "text-brand-muted hover:text-brand-ink"
-              }`}
-            >
-              <span className="text-[10px] opacity-75">{step.stepNumber}</span>
-              <span className="hidden sm:inline">{step.label}</span>
-            </button>
-          ))}
+        {/* Step Selector Tabs - 4 Symmetrical Columns on all screens */}
+        <div className="grid grid-cols-4 gap-1 p-1 max-w-lg mx-auto w-full rounded-2xl border border-brand-line bg-white mb-4 shadow-xs">
+          {demoModalData.steps.map((step) => {
+            const isActive = activeTab === step.id;
+            return (
+              <button
+                key={step.id}
+                type="button"
+                onClick={() => setActiveTab(step.id)}
+                className={`flex items-center justify-center gap-1 sm:gap-1.5 rounded-xl py-1.5 sm:py-2 text-[10.5px] sm:text-xs font-bold transition-all ${
+                  isActive
+                    ? "bg-teal-900 text-white shadow-sm font-extrabold"
+                    : "text-brand-muted hover:text-brand-ink"
+                }`}
+              >
+                <span className={`text-[9px] sm:text-[10px] ${isActive ? "text-teal-200" : "opacity-60"}`}>
+                  {step.stepNumber}
+                </span>
+                <span className="truncate">{step.label}</span>
+              </button>
+            );
+          })}
         </div>
 
-        {/* Dynamic Stage View */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center rounded-2xl border border-brand-line bg-white p-6 sm:p-10 shadow-sm min-h-[380px]">
+        {/* Dynamic Stage View (Adaptive Mobile + Desktop) */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-8 items-center rounded-2xl border border-brand-line bg-white p-4 sm:p-8 shadow-xs">
           {/* Left Visual Scene */}
           <div className="md:col-span-6 flex justify-center">
             {activeTab === "scan" && (
-              <div className="w-52 h-80 rounded-[32px] border-4 border-slate-950 bg-slate-950 p-2 shadow-xl">
-                <div className="flex h-full flex-col rounded-[24px] bg-gradient-to-b from-slate-700 to-slate-950 p-3 text-center text-white">
-                  <div className="flex items-center justify-between text-[8px] text-teal-200 mb-4">
-                    <span>Scanner QR</span>
-                    <span>⚡</span>
+              <div className="w-full max-w-[240px] sm:max-w-xs rounded-2xl border border-slate-900 bg-slate-950 p-2 shadow-lg">
+                <div className="flex flex-col items-center justify-center rounded-xl bg-gradient-to-b from-slate-800 to-slate-950 p-3 text-center text-white min-h-[160px] sm:min-h-[220px]">
+                  <div className="relative flex h-24 w-24 sm:h-28 sm:w-28 items-center justify-center rounded-xl border border-dashed border-teal-400 bg-black/40 p-2">
+                    <Icon name="qr" className="h-12 w-12 sm:h-14 sm:w-14 text-teal-100" />
+                    <span className="absolute -top-1 -left-1 h-3 w-3 border-t-2 border-l-2 border-teal-300" />
+                    <span className="absolute -top-1 -right-1 h-3 w-3 border-t-2 border-r-2 border-teal-300" />
+                    <span className="absolute -bottom-1 -left-1 h-3 w-3 border-b-2 border-l-2 border-teal-300" />
+                    <span className="absolute -bottom-1 -right-1 h-3 w-3 border-b-2 border-r-2 border-teal-300" />
                   </div>
-                  <div className="my-auto flex flex-col items-center justify-center">
-                    <div className="relative flex h-28 w-28 items-center justify-center rounded-xl border border-dashed border-teal-400 bg-black/40 p-2">
-                      <Icon name="qr" className="h-14 w-14 text-teal-100" />
-                      <span className="absolute -top-1 -left-1 h-3 w-3 border-t-2 border-l-2 border-teal-300" />
-                      <span className="absolute -top-1 -right-1 h-3 w-3 border-t-2 border-r-2 border-teal-300" />
-                      <span className="absolute -bottom-1 -left-1 h-3 w-3 border-b-2 border-l-2 border-teal-300" />
-                      <span className="absolute -bottom-1 -right-1 h-3 w-3 border-b-2 border-r-2 border-teal-300" />
-                    </div>
-                    <span className="mt-3 font-mono text-[9px] text-teal-300">
-                      EQP-0001 détecté
-                    </span>
-                  </div>
+                  <span className="mt-2 font-mono text-[9px] text-teal-300">
+                    EQP-0001 détecté · Hôtel Savana
+                  </span>
                 </div>
               </div>
             )}
 
             {activeTab === "ticket" && (
-              <div className="w-full max-w-sm rounded-2xl border border-brand-line bg-[#fbfcfc] p-5 shadow-md">
-                <span className="rounded-md bg-rose-100 px-2 py-0.5 text-[9px] font-bold text-rose-800">
+              <div className="w-full max-w-[260px] sm:max-w-sm rounded-2xl border border-brand-line bg-[#fbfcfc] p-3.5 sm:p-5 shadow-sm">
+                <span className="rounded-md bg-rose-100 px-2 py-0.5 text-[8.5px] sm:text-[9px] font-bold text-rose-800">
                   CRITIQUE
                 </span>
-                <h4 className="mt-2 font-sora text-sm font-bold text-brand-ink">
+                <h4 className="mt-1.5 font-sora text-xs sm:text-sm font-bold text-brand-ink">
                   Climatisation ne refroidit plus
                 </h4>
-                <p className="text-[11px] text-brand-muted mt-0.5">
+                <p className="text-[10px] sm:text-[11px] text-brand-muted">
                   AC-014 · Hôtel Savana · Bloc principal
                 </p>
-                <div className="my-4 flex gap-4 text-[10px] text-brand-muted border-y border-brand-line/60 py-2">
+                <div className="my-2.5 flex gap-3 text-[9.5px] text-brand-muted border-y border-brand-line/60 py-1.5">
                   <span>📷 2 photos</span>
                   <span>⏱ il y a 2 min</span>
                 </div>
-                <button className="w-full rounded-xl bg-teal-900 py-2.5 text-xs font-bold text-white shadow-sm">
-                  Créer l'ordre de travail →
-                </button>
+                <div className="rounded-lg bg-teal-900 py-1.5 text-[10px] font-bold text-white text-center shadow-xs">
+                  Ordre de travail généré
+                </div>
               </div>
             )}
 
             {activeTab === "work" && (
-              <div className="w-full max-w-sm rounded-2xl border border-brand-line bg-[#fbfcfc] p-5 shadow-md">
-                <div className="flex items-center justify-between border-b border-brand-line/60 pb-2 mb-3">
-                  <span className="text-[9px] font-bold text-brand-muted uppercase">
+              <div className="w-full max-w-[260px] sm:max-w-sm rounded-2xl border border-brand-line bg-[#fbfcfc] p-3.5 sm:p-5 shadow-sm">
+                <div className="flex items-center justify-between border-b border-brand-line/60 pb-1.5 mb-2">
+                  <span className="text-[8.5px] font-bold text-brand-muted uppercase">
                     INTERVENTION EN COURS
                   </span>
-                  <strong className="font-sora text-sm text-teal-800">
+                  <strong className="font-sora text-xs sm:text-sm text-teal-800">
                     00:36:24
                   </strong>
                 </div>
-                <h4 className="font-sora text-sm font-bold text-brand-ink mb-2">
+                <h4 className="font-sora text-xs sm:text-sm font-bold text-brand-ink mb-1.5">
                   Service 500H · GE-001
                 </h4>
-                <ul className="space-y-1.5 text-xs">
-                  <li className="flex items-center gap-2 rounded-lg bg-emerald-50 text-emerald-800 p-2 font-medium">
-                    <Icon name="check" className="h-3.5 w-3.5 text-emerald-600" />
+                <ul className="space-y-1 text-[10px] sm:text-xs">
+                  <li className="flex items-center gap-1.5 rounded-lg bg-emerald-50 text-emerald-800 p-1.5 font-medium">
+                    <Icon name="check" className="h-3 w-3 text-emerald-600" />
                     <span>Contrôle niveau huile</span>
                   </li>
-                  <li className="flex items-center gap-2 rounded-lg bg-emerald-50 text-emerald-800 p-2 font-medium">
-                    <Icon name="check" className="h-3.5 w-3.5 text-emerald-600" />
+                  <li className="flex items-center gap-1.5 rounded-lg bg-emerald-50 text-emerald-800 p-1.5 font-medium">
+                    <Icon name="check" className="h-3 w-3 text-emerald-600" />
                     <span>Remplacement filtre</span>
                   </li>
-                  <li className="flex items-center gap-2 rounded-lg bg-slate-50 text-brand-muted p-2 font-medium">
-                    <span className="h-3 w-3 rounded-full border border-slate-300" />
-                    <span>Inspection fuite</span>
-                  </li>
                 </ul>
-                <button className="w-full rounded-xl bg-teal-900 py-2.5 text-xs font-bold text-white shadow-sm mt-4">
-                  Clôturer l'intervention
-                </button>
               </div>
             )}
 
             {activeTab === "history" && (
-              <div className="w-full max-w-sm rounded-2xl border border-brand-line bg-[#fbfcfc] p-5 shadow-md space-y-4">
-                <div className="relative pl-6 border-l-2 border-teal-700 space-y-4">
+              <div className="w-full max-w-[260px] sm:max-w-sm rounded-2xl border border-brand-line bg-[#fbfcfc] p-3.5 sm:p-5 shadow-sm space-y-2.5 text-[10px] sm:text-xs">
+                <div className="relative pl-4 border-l-2 border-teal-700 space-y-2.5">
                   <div className="relative">
-                    <span className="absolute -left-[31px] top-0 h-3 w-3 rounded-full bg-teal-700 ring-4 ring-teal-100" />
-                    <small className="text-[9px] font-bold text-brand-muted">18 MAI 2026</small>
-                    <b className="block text-xs font-bold text-brand-ink leading-tight">Maintenance 500H terminée</b>
-                    <p className="text-[10px] text-brand-muted">Filtre huile remplacé · 2h14 · 128 500 FCFA</p>
+                    <span className="absolute -left-[21px] top-1 h-2.5 w-2.5 rounded-full bg-teal-700 ring-2 ring-teal-100" />
+                    <small className="text-[8px] font-bold text-brand-muted">18 MAI 2026</small>
+                    <b className="block text-[11px] font-bold text-brand-ink leading-tight">Maintenance 500H terminée</b>
+                    <p className="text-[9.5px] text-brand-muted">Filtre remplacé · 128 500 FCFA</p>
                   </div>
                   <div className="relative">
-                    <span className="absolute -left-[31px] top-0 h-3 w-3 rounded-full bg-teal-700 ring-4 ring-teal-100" />
-                    <small className="text-[9px] font-bold text-brand-muted">02 AVRIL 2026</small>
-                    <b className="block text-xs font-bold text-brand-ink leading-tight">Incident batterie</b>
-                    <p className="text-[10px] text-brand-muted">Batterie remplacée sous garantie</p>
-                  </div>
-                  <div className="relative">
-                    <span className="absolute -left-[31px] top-0 h-3 w-3 rounded-full bg-teal-700 ring-4 ring-teal-100" />
-                    <small className="text-[9px] font-bold text-brand-muted">12 MAI 2021</small>
-                    <b className="block text-xs font-bold text-brand-ink leading-tight">Équipement installé</b>
-                    <p className="text-[10px] text-brand-muted">Groupe SDMO · 15 000 000 FCFA</p>
+                    <span className="absolute -left-[21px] top-1 h-2.5 w-2.5 rounded-full bg-teal-700 ring-2 ring-teal-100" />
+                    <small className="text-[8px] font-bold text-brand-muted">02 AVRIL 2026</small>
+                    <b className="block text-[11px] font-bold text-brand-ink leading-tight">Incident batterie résolu</b>
+                    <p className="text-[9.5px] text-brand-muted">Sous garantie</p>
                   </div>
                 </div>
               </div>
             )}
           </div>
 
-          {/* Right Explanation */}
-          <div className="md:col-span-6 flex flex-col justify-center">
-            <span className="text-xs font-extrabold tracking-wider text-teal-800 uppercase">
+          {/* Right / Bottom Explanation */}
+          <div className="md:col-span-6 flex flex-col justify-center text-left">
+            <span className="text-[10px] sm:text-xs font-extrabold tracking-wider text-teal-800 uppercase">
               {currentStep.subtitle}
             </span>
-            <h4 className="mt-2 font-sora text-xl sm:text-2xl font-bold text-brand-ink leading-snug">
+            <h4 className="mt-1 font-sora text-base sm:text-xl font-bold text-brand-ink leading-snug">
               {currentStep.title}
             </h4>
-            <p className="mt-3 text-xs md:text-sm leading-relaxed text-brand-muted">
+            <p className="mt-1.5 text-xs sm:text-sm leading-relaxed text-brand-muted">
               {currentStep.description}
             </p>
+
+            <div className="mt-4 flex items-center gap-2.5">
+              <button
+                type="button"
+                onClick={handleNext}
+                className="flex items-center justify-center gap-1.5 rounded-xl bg-teal-900 px-4 py-2.5 text-xs font-bold text-white shadow-md hover:bg-teal-950 transition-all"
+              >
+                <span>{currentStepIndex === 3 ? "Rejoindre le pilote" : "Étape suivante"}</span>
+                <span>→</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
