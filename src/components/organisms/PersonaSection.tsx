@@ -34,19 +34,27 @@ export function PersonaSection() {
           </p>
         </div>
 
-        {/* Persona Tabs Switcher - Zero Horizontal Scroll */}
-        <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-4">
+        {/* Persona Tabs Switcher - Centered & Symmetrical */}
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-5">
           {personaKeys.map((key) => {
             const item = personasSectionData.personas[key];
+            const mobileShortLabel =
+              key === "maintenance"
+                ? "Maintenance"
+                : key === "site"
+                ? "Resp. Site"
+                : item.tabLabel;
+
             return (
               <TabButton
                 key={key}
                 variant="pill"
                 active={activePersonaKey === key}
                 onClick={() => setActivePersonaKey(key)}
-                className="text-xs font-bold"
+                className="text-xs font-bold px-4 py-2"
               >
-                {item.tabLabel}
+                <span className="sm:hidden">{mobileShortLabel}</span>
+                <span className="hidden sm:inline">{item.tabLabel}</span>
               </TabButton>
             );
           })}

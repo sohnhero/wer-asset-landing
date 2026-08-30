@@ -39,10 +39,10 @@ export function BentoFeatures() {
           </p>
         </div>
 
-        {/* MOBILE ONLY (< lg): Interactive Feature Switcher (Zero Horizontal Scroll) */}
+        {/* MOBILE ONLY (< lg): Interactive Feature Switcher (Centered & Symmetrical) */}
         <div className="lg:hidden">
-          {/* Mobile Wrap Pill Switcher */}
-          <div className="flex flex-wrap items-center gap-2 mb-5">
+          {/* Mobile Centered Symmetrical Pill Switcher */}
+          <div className="flex flex-wrap items-center justify-center gap-2 mb-5">
             {mobileTabs.map((tab) => (
               <button
                 key={tab.id}
