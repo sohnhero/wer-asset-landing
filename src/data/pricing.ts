@@ -1,0 +1,77 @@
+import { PricingPlan } from "@/types";
+
+export const pricingSectionData = {
+  eyebrow: "DES OFFRES QUI GRANDISSENT AVEC VOTRE PARC",
+  titlePrimary: "Commencez petit.",
+  titleHighlight: "Industrialisez ensuite.",
+  subtitle:
+    "La tarification finale sera validée avec le premier client pilote. La structure ci-dessous correspond aux paliers fonctionnels du produit.",
+  plans: [
+    {
+      id: "starter",
+      name: "Starter",
+      range: "0 — 50",
+      unit: "équipements",
+      description: "Pour un site unique qui veut abandonner Excel et centraliser son parc.",
+      features: [
+        "Identité & QR équipement",
+        "Tickets & historique",
+        "Maintenance préventive",
+        "Dashboard essentiel",
+      ],
+      ctaLabel: "Nous contacter",
+      ctaHref: "#contact",
+      isFeatured: false,
+    },
+    {
+      id: "essentiel",
+      name: "Essentiel",
+      range: "51 — 250",
+      unit: "équipements",
+      description: "Le cœur de WËR ASSET pour les hôtels et organisations avec un parc technique structuré.",
+      features: [
+        "Tout Starter",
+        "Application technicien offline",
+        "Pièces & stock",
+        "Fournisseurs, SLA & garanties",
+      ],
+      ctaLabel: "Demander un pilote",
+      ctaHref: "#contact",
+      isFeatured: true,
+      featuredBadge: "CIBLE DU PILOTE",
+    },
+    {
+      id: "business",
+      name: "Business",
+      range: "251 — 1 000",
+      unit: "équipements",
+      description: "Pour les grands établissements et les organisations multi-sites.",
+      features: [
+        "Tout Essentiel",
+        "Pilotage multi-sites",
+        "Reporting & TCO avancé",
+        "Accompagnement dédié",
+      ],
+      ctaLabel: "Parler à l'équipe",
+      ctaHref: "#contact",
+      isFeatured: false,
+    },
+    {
+      id: "entreprise",
+      name: "Entreprise",
+      range: "1 000+",
+      unit: "équipements",
+      description: "Un déploiement adapté à votre organisation, vos processus et vos sites.",
+      features: [
+        "Périmètre personnalisé",
+        "Support & onboarding dédiés",
+        "Gouvernance & sécurité",
+        "Tarification négociée",
+      ],
+      ctaLabel: "Construire l'offre",
+      ctaHref: "#contact",
+      isFeatured: false,
+      isEnterprise: true,
+    },
+  ] as PricingPlan[],
+};

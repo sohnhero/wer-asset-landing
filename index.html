@@ -1,0 +1,680 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#062f2e">
+  <meta name="description" content="WËR ASSET — La plateforme de gestion d'actifs et de maintenance pensée pour les équipes terrain.">
+  <title>WËR ASSET — Chaque équipement a une histoire.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <svg class="sprite" aria-hidden="true">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M14 7l5 5-5 5"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="m9 7 8 5-8 5V7Z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-qr" viewBox="0 0 24 24"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM15 14h2v2h-2zM18 14h2v6h-3M14 18h2v2h-2z"/></symbol>
+    <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5-5l2.1 2.1-2.8 2.8-2.1-2.1a4 4 0 0 0 5 5L20 17.2a2 2 0 1 1-2.8 2.8L9.1 11.9"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></symbol>
+    <symbol id="i-box" viewBox="0 0 24 24"><path d="M21 8 12 3 3 8l9 5 9-5Z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></symbol>
+    <symbol id="i-ticket" viewBox="0 0 24 24"><path d="M3 5h18v5a2 2 0 0 0 0 4v5H3v-5a2 2 0 0 0 0-4V5Z"/><path d="M13 5v2M13 11v2M13 17v2"/></symbol>
+    <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18a5 5 0 1 1 1-9.9A7 7 0 0 1 21 12a4 4 0 0 1-4 6H7Z"/><path d="m9 13 3 3 5-6"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 5 3 8 7 10 4-2 7-5 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-5"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/><path d="M10 21h4"/></symbol>
+    <symbol id="i-stock" viewBox="0 0 24 24"><path d="M3 8 12 3l9 5-9 5-9-5Z"/><path d="m3 13 9 5 9-5"/><path d="m3 17 9 5 9-5"/></symbol>
+    <symbol id="i-mobile" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="4"/><path d="M2 21a7 7 0 0 1 14 0"/><path d="M16 4a4 4 0 0 1 0 8"/><path d="M17 14a6 6 0 0 1 5 6"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  </svg>
+
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-wrap">
+      <a class="brand" href="#top" aria-label="Wër Asset">
+        <img src="assets/logo-mark.png" alt="">
+        <span>WËR <b>ASSET</b></span>
+      </a>
+
+      <nav class="main-nav" id="mainNav">
+        <a href="#product">Produit</a>
+        <a href="#features">Fonctionnalités</a>
+        <a href="#how">Comment ça marche</a>
+        <a href="#solutions">Solutions</a>
+        <a href="#pricing">Offres</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="link-btn" href="#demo">Voir la démo</a>
+        <a class="nav-cta" href="#contact">Demander un pilote <svg><use href="#i-arrow"/></svg></a>
+        <button class="menu-btn" id="menuBtn" aria-label="Menu"><svg><use href="#i-menu"/></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-noise"></div>
+      <div class="hero-grid-lines"></div>
+      <div class="hero-glow hero-glow-a"></div>
+      <div class="hero-glow hero-glow-b"></div>
+
+      <div class="container hero-inner">
+        <div class="hero-copy reveal">
+          <div class="hero-badge"><span></span> GMAO légère & gestion d'actifs · conçue au Sénégal</div>
+          <h1>
+            Vos équipements.<br>
+            <span class="gradient-text">Enfin sous contrôle.</span>
+          </h1>
+          <p class="hero-lead">WËR ASSET donne à chaque équipement une identité numérique, un historique et un plan de maintenance. Scannez un QR code, intervenez, tracez les coûts et anticipez les pannes.</p>
+
+          <div class="hero-actions">
+            <a class="btn-primary magnetic" href="#contact">Lancer un pilote <svg><use href="#i-arrow"/></svg></a>
+            <button class="btn-ghost" id="openDemo"><span class="play"><svg><use href="#i-play"/></svg></span> Voir l'expérience produit</button>
+          </div>
+
+          <div class="hero-trust">
+            <div class="trust-item"><span class="trust-icon"><svg><use href="#i-qr"/></svg></span><span><b>QR-first</b><small>Scan en quelques secondes</small></span></div>
+            <div class="trust-item"><span class="trust-icon"><svg><use href="#i-cloud"/></svg></span><span><b>Offline-first</b><small>Le terrain reste opérationnel</small></span></div>
+            <div class="trust-item"><span class="trust-icon"><svg><use href="#i-shield"/></svg></span><span><b>Traçable</b><small>Chaque action est historisée</small></span></div>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal delay-1" id="heroVisual">
+          <div class="float-pill float-pill-1"><span class="live-dot"></span> 86% du parc opérationnel</div>
+          <div class="float-pill float-pill-2"><svg><use href="#i-wrench"/></svg> 18 maintenances planifiées</div>
+
+          <div class="dashboard-shell">
+            <div class="dashboard-top">
+              <div class="window-dots"><i></i><i></i><i></i></div>
+              <span>app.wer-asset.com</span>
+              <div class="window-user">MD</div>
+            </div>
+            <div class="dashboard-body">
+              <aside class="dash-side">
+                <div class="mini-brand"><img src="assets/logo-mark.png" alt=""><b>WËR ASSET</b></div>
+                <button class="active"><span>◈</span> Tableau de bord</button>
+                <button><span>▣</span> Équipements</button>
+                <button><span>⌁</span> Maintenances</button>
+                <button><span>◇</span> Tickets</button>
+                <button><span>▦</span> Stocks</button>
+                <button><span>↗</span> Rapports</button>
+                <div class="dash-sync"><i></i> Synchronisé</div>
+              </aside>
+
+              <div class="dash-main">
+                <div class="dash-head">
+                  <div><small>18 Mai 2026 · Dakar</small><h3>Bonjour, Admin</h3></div>
+                  <div class="dash-actions"><span>⌕</span><span>♢</span><b>MD</b></div>
+                </div>
+
+                <div class="dash-kpis">
+                  <article><div class="kpi-symbol teal"><svg><use href="#i-box"/></svg></div><span>Équipements</span><strong>256</strong><small>Actifs suivis</small></article>
+                  <article><div class="kpi-symbol green"><svg><use href="#i-check"/></svg></div><span>Disponibilité</span><strong>86%</strong><small>+7 pts ce mois</small></article>
+                  <article><div class="kpi-symbol amber"><svg><use href="#i-wrench"/></svg></div><span>Maintenances</span><strong>18</strong><small>À planifier</small></article>
+                  <article><div class="kpi-symbol red"><svg><use href="#i-ticket"/></svg></div><span>Tickets</span><strong>7</strong><small>2 critiques</small></article>
+                </div>
+
+                <div class="dash-grid">
+                  <article class="dash-card status-card">
+                    <div class="dash-card-head"><div><b>État du parc</b><small>256 équipements</small></div><span>•••</span></div>
+                    <div class="status-chart">
+                      <div class="donut"><div><b>86%</b><small>en service</small></div></div>
+                      <ul>
+                        <li><i class="c-green"></i><span>En service</span><b>220</b></li>
+                        <li><i class="c-amber"></i><span>À surveiller</span><b>20</b></li>
+                        <li><i class="c-red"></i><span>Maintenance</span><b>10</b></li>
+                        <li><i class="c-gray"></i><span>Hors service</span><b>6</b></li>
+                      </ul>
+                    </div>
+                  </article>
+                  <article class="dash-card maintenance-card">
+                    <div class="dash-card-head"><div><b>À venir</b><small>Maintenances</small></div><span>Voir tout</span></div>
+                    <div class="maint-row"><span class="maint-icon">GE</span><div><b>Groupe 500 KVA</b><small>Service 500H</small></div><time>20 Mai</time></div>
+                    <div class="maint-row"><span class="maint-icon blue">AC</span><div><b>Climatisation</b><small>Nettoyage filtres</small></div><time>21 Mai</time></div>
+                    <div class="maint-row"><span class="maint-icon violet">PM</span><div><b>Pompe</b><small>Inspection</small></div><time>22 Mai</time></div>
+                  </article>
+                </div>
+
+                <article class="dash-card dash-table-card">
+                  <div class="dash-card-head"><div><b>Derniers équipements</b><small>Activité récente</small></div><span>Exporter</span></div>
+                  <div class="dash-table">
+                    <div class="table-head"><span>ÉQUIPEMENT</span><span>SITE</span><span>STATUT</span><span>PROCHAINE MAINT.</span></div>
+                    <div class="table-row"><span><i class="asset-ico">GE</i><b>Groupe électrogène 500KVA</b></span><span>Hôtel Savana</span><span class="status green">En service</span><span>20 Mai</span></div>
+                    <div class="table-row"><span><i class="asset-ico blue">AC</i><b>Climatisation centrale</b></span><span>Hôtel Ndakar</span><span class="status amber">À surveiller</span><span>21 Mai</span></div>
+                    <div class="table-row"><span><i class="asset-ico violet">PM</i><b>Pompe de surpression</b></span><span>Rés. Almadies</span><span class="status green">En service</span><span>22 Mai</span></div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+
+          <div class="phone-mock">
+            <div class="phone-top"><span>9:41</span><i></i></div>
+            <div class="phone-head"><img src="assets/logo-mark.png" alt=""><b>WËR ASSET</b><span>•••</span></div>
+            <div class="phone-body">
+              <small>ÉQUIPEMENT</small>
+              <div class="phone-machine">
+                <div class="machine"><div class="vents"></div><div class="label-qr"><svg><use href="#i-qr"/></svg><b>EQP-0001</b></div></div>
+                <span class="phone-status"><i></i> En service</span>
+              </div>
+              <h4>Groupe électrogène<br>500 KVA</h4>
+              <p>EQP-0001 · Hôtel Savana</p>
+              <div class="next-maint"><span>Prochaine maintenance</span><b>Service 500H</b><small>Dans 2 jours</small></div>
+              <button>Démarrer l'intervention</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container hero-bottom reveal">
+        <p>Une plateforme pour ceux qui doivent garder les équipements critiques en état de marche.</p>
+        <div class="market-tags">
+          <span>Hôtellerie</span><span>Cliniques</span><span>Immeubles</span><span>Industrie</span><span>Retail</span><span>ONG</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROBLEM / VALUE -->
+    <section class="section problem-section" id="product">
+      <div class="container">
+        <div class="section-heading centered reveal">
+          <span class="eyebrow">LE PROBLÈME</span>
+          <h2>Excel, WhatsApp, carnets papier.<br><span>Vos équipements méritent mieux.</span></h2>
+          <p>Quand l'information est dispersée, la maintenance devient réactive, coûteuse et impossible à auditer.</p>
+        </div>
+
+        <div class="problem-grid">
+          <article class="problem-card reveal">
+            <span class="problem-num">01</span>
+            <div class="problem-icon"><svg><use href="#i-ticket"/></svg></div>
+            <h3>Les pannes arrivent sans contexte</h3>
+            <p>Dernière intervention, garantie, pièce remplacée, coût cumulé : l'information est souvent introuvable au moment où elle compte.</p>
+            <div class="problem-line"><span></span></div>
+          </article>
+          <article class="problem-card reveal delay-1">
+            <span class="problem-num">02</span>
+            <div class="problem-icon"><svg><use href="#i-clock"/></svg></div>
+            <h3>Le préventif est oublié</h3>
+            <p>Les échéances sont suivies manuellement, les compteurs ne sont pas consolidés et une maintenance retardée devient une panne coûteuse.</p>
+            <div class="problem-line amber"><span></span></div>
+          </article>
+          <article class="problem-card reveal delay-2">
+            <span class="problem-num">03</span>
+            <div class="problem-icon"><svg><use href="#i-chart"/></svg></div>
+            <h3>Les coûts restent invisibles</h3>
+            <p>Sans historique fiable, difficile de savoir quel équipement coûte trop cher, quel prestataire respecte son SLA ou quand remplacer un actif.</p>
+            <div class="problem-line red"><span></span></div>
+          </article>
+        </div>
+
+        <div class="value-banner reveal">
+          <div class="value-logo"><img src="assets/logo-mark.png" alt=""></div>
+          <div class="value-copy">
+            <span class="eyebrow light">LA RÉPONSE</span>
+            <h3>Le carnet de santé numérique de vos équipements.</h3>
+            <p>Une seule source de vérité, du QR code sur la machine jusqu'au tableau de bord de la direction.</p>
+          </div>
+          <div class="value-flow">
+            <span>Scanner</span><i>→</i><span>Identifier</span><i>→</i><span>Maintenir</span><i>→</i><span>Tracer</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES / BENTO -->
+    <section class="section features-section" id="features">
+      <div class="container">
+        <div class="section-heading split reveal">
+          <div>
+            <span class="eyebrow">TOUT CE QU'IL FAUT. RIEN DE SUPERFLU.</span>
+            <h2>Une GMAO légère,<br><span>pensée pour le réel.</span></h2>
+          </div>
+          <p>De l'identification de l'actif à l'analyse des coûts, WËR ASSET couvre la chaîne opérationnelle sans la complexité des GMAO lourdes.</p>
+        </div>
+
+        <div class="bento-grid">
+          <article class="bento bento-large dark reveal">
+            <div class="bento-copy">
+              <span class="bento-icon"><svg><use href="#i-qr"/></svg></span>
+              <span class="bento-kicker">QR-FIRST</span>
+              <h3>Un scan. Toute l'histoire de l'équipement.</h3>
+              <p>Chaque actif possède une identité numérique unique. Scannez l'étiquette pour voir son état, son historique, ses documents ou signaler un problème.</p>
+            </div>
+            <div class="qr-scene">
+              <div class="qr-rings"></div>
+              <div class="qr-device">
+                <div class="qr-camera">
+                  <div class="qr-frame"><i></i><i></i><i></i><i></i><svg><use href="#i-qr"/></svg></div>
+                  <span>EQP-0001</span>
+                </div>
+              </div>
+              <div class="qr-label">
+                <div><img src="assets/logo-mark.png" alt=""><b>WËR ASSET</b></div>
+                <strong>EQP-0001</strong>
+                <svg><use href="#i-qr"/></svg>
+                <small>Groupe électrogène · 500 KVA</small>
+              </div>
+            </div>
+          </article>
+
+          <article class="bento reveal delay-1">
+            <div class="bento-copy">
+              <span class="bento-icon amber-bg"><svg><use href="#i-wrench"/></svg></span>
+              <span class="bento-kicker">MAINTENANCE PRÉVENTIVE</span>
+              <h3>Planifiez avant la panne.</h3>
+              <p>Date, périodicité ou compteur : les ordres de travail se déclenchent au bon moment.</p>
+            </div>
+            <div class="mini-calendar">
+              <div class="cal-head"><span>Mai 2026</span><b>18 tâches</b></div>
+              <div class="cal-days">
+                <span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span>
+                <i>18</i><i>19</i><i class="today">20<em></em></i><i>21<em class="amber"></em></i><i>22<em></em></i><i>23</i><i>24</i>
+              </div>
+              <div class="cal-task"><span class="task-dot red"></span><div><b>Service 500H</b><small>GE-001 · 08:00</small></div><strong>Critique</strong></div>
+              <div class="cal-task"><span class="task-dot teal"></span><div><b>Nettoyage filtres</b><small>AC-014 · 11:30</small></div><strong>Préventif</strong></div>
+            </div>
+          </article>
+
+          <article class="bento reveal">
+            <div class="bento-copy">
+              <span class="bento-icon green-bg"><svg><use href="#i-ticket"/></svg></span>
+              <span class="bento-kicker">TICKETS & ORDRES DE TRAVAIL</span>
+              <h3>Du signalement à la preuve d'intervention.</h3>
+            </div>
+            <div class="flow-cards">
+              <div class="flow-card"><i class="gray"></i><span>Nouveau</span><b>3</b></div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-card"><i class="blue"></i><span>Affecté</span><b>2</b></div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-card"><i class="amber"></i><span>Intervention</span><b>1</b></div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-card"><i class="green"></i><span>Résolu</span><b>1</b></div>
+            </div>
+          </article>
+
+          <article class="bento bento-wide reveal delay-1">
+            <div class="bento-copy">
+              <span class="bento-icon blue-bg"><svg><use href="#i-chart"/></svg></span>
+              <span class="bento-kicker">COÛTS & PILOTAGE</span>
+              <h3>Transformez chaque intervention en décision.</h3>
+              <p>Disponibilité, top équipements coûteux, coûts par site, catégorie ou fournisseur et TCO : la direction voit enfin où part le budget maintenance.</p>
+            </div>
+            <div class="analytics-scene">
+              <div class="analytics-kpi"><small>Coût ce mois</small><strong>1,25 M <em>FCFA</em></strong><span>↓ 8.6%</span></div>
+              <div class="analytics-chart">
+                <svg viewBox="0 0 520 180" preserveAspectRatio="none">
+                  <defs><linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0E4B4A" stop-opacity=".35"/><stop offset="1" stop-color="#0E4B4A" stop-opacity="0"/></linearGradient></defs>
+                  <path class="grid" d="M0 40H520M0 80H520M0 120H520M0 160H520"/>
+                  <path class="area" d="M0 130 C60 110,80 70,130 85 S210 140,255 105 S330 50,390 72 S455 110,520 50 L520 180L0 180Z"/>
+                  <path class="line" d="M0 130 C60 110,80 70,130 85 S210 140,255 105 S330 50,390 72 S455 110,520 50"/>
+                </svg>
+                <div><span>Déc</span><span>Jan</span><span>Fév</span><span>Mar</span><span>Avr</span><span>Mai</span></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="bento reveal">
+            <div class="bento-copy">
+              <span class="bento-icon violet-bg"><svg><use href="#i-stock"/></svg></span>
+              <span class="bento-kicker">PIÈCES & STOCK</span>
+              <h3>Anticipez les ruptures critiques.</h3>
+              <p>Chaque sortie est rattachée à un ordre de travail. Les seuils déclenchent les alertes de réapprovisionnement.</p>
+            </div>
+            <div class="stock-list">
+              <div><span class="stock-dot ok"></span><b>Filtre huile GE</b><strong>12 <small>/ seuil 5</small></strong></div>
+              <div><span class="stock-dot low"></span><b>Filtre clim 600×600</b><strong>4 <small>/ seuil 6</small></strong></div>
+              <div><span class="stock-dot out"></span><b>Courroie AX52</b><strong>0 <small>/ seuil 2</small></strong></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section how-section" id="how">
+      <div class="container">
+        <div class="section-heading centered reveal">
+          <span class="eyebrow">UN PARCOURS QUI COLLE AU TERRAIN</span>
+          <h2>De la machine au tableau de bord.<br><span>Sans friction.</span></h2>
+        </div>
+
+        <div class="how-shell reveal">
+          <div class="how-tabs" role="tablist">
+            <button class="active" data-step="1"><span>01</span> Scanner</button>
+            <button data-step="2"><span>02</span> Signaler</button>
+            <button data-step="3"><span>03</span> Intervenir</button>
+            <button data-step="4"><span>04</span> Analyser</button>
+          </div>
+
+          <div class="how-content">
+            <div class="how-copy">
+              <span class="step-pill">ÉTAPE <b id="stepNumber">01</b></span>
+              <h3 id="stepTitle">Scannez le QR code de l'équipement.</h3>
+              <p id="stepText">Pas de recherche complexe ni de navigation interminable. Le technicien ou le responsable de site arrive directement sur la bonne fiche.</p>
+              <ul id="stepList">
+                <li><svg><use href="#i-check"/></svg> Identification immédiate de l'actif</li>
+                <li><svg><use href="#i-check"/></svg> Accès adapté au rôle de l'utilisateur</li>
+                <li><svg><use href="#i-check"/></svg> Historique et documents disponibles</li>
+              </ul>
+            </div>
+
+            <div class="how-visual">
+              <div class="how-phone" id="howPhone">
+                <div class="how-phone-top"><span>9:41</span><i></i></div>
+                <div class="how-appbar"><img src="assets/logo-mark.png" alt=""><b>Scanner un QR code</b><span>⚡</span></div>
+                <div class="how-screen step-screen step-1 active">
+                  <div class="scan-zone">
+                    <div class="scan-brackets"><i></i><i></i><i></i><i></i><svg><use href="#i-qr"/></svg></div>
+                    <p>Placez le QR code dans le cadre</p>
+                  </div>
+                </div>
+                <div class="how-screen step-screen step-2">
+                  <div class="mobile-form">
+                    <div class="mobile-asset-mini"><div class="mini-equipment">GE</div><div><b>Groupe 500 KVA</b><small>EQP-0001 · Hôtel Savana</small></div></div>
+                    <label>Description<textarea>La température monte anormalement...</textarea></label>
+                    <div class="urgency"><span>Urgence</span><button>Faible</button><button class="selected">Critique</button></div>
+                    <div class="photo-upload"><svg><use href="#i-plus"/></svg><span>Ajouter une photo</span></div>
+                    <button class="mobile-submit">Créer le ticket</button>
+                  </div>
+                </div>
+                <div class="how-screen step-screen step-3">
+                  <div class="work-order">
+                    <span class="wo-label">ORDRE DE TRAVAIL</span>
+                    <h4>Service 500H</h4>
+                    <p>GE-001 · Hôtel Savana</p>
+                    <div class="wo-timer">00:36:24 <span>en cours</span></div>
+                    <ul><li><span>✓</span> Contrôle niveau huile</li><li><span>✓</span> Remplacement filtre</li><li><span></span> Inspection fuite</li></ul>
+                    <button class="mobile-submit">Clôturer l'intervention</button>
+                  </div>
+                </div>
+                <div class="how-screen step-screen step-4">
+                  <div class="mobile-analytics">
+                    <small>ÉQUIPEMENT</small><h4>GE-001</h4><p>Coût total de possession</p>
+                    <strong>18,4 M <em>FCFA</em></strong>
+                    <div class="mobile-bars"><i style="height:45%"></i><i style="height:60%"></i><i style="height:52%"></i><i style="height:78%"></i><i style="height:65%"></i><i style="height:86%"></i></div>
+                    <div class="mobile-insight"><span>↘</span><div><b>Coût mensuel en baisse</b><small>−8.6% vs mois précédent</small></div></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="how-orbit orbit-a"><svg><use href="#i-qr"/></svg></div>
+              <div class="how-orbit orbit-b"><svg><use href="#i-wrench"/></svg></div>
+              <div class="how-orbit orbit-c"><svg><use href="#i-chart"/></svg></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OFFLINE / MOBILE -->
+    <section class="section offline-section">
+      <div class="container offline-grid">
+        <div class="offline-copy reveal">
+          <span class="eyebrow light">OFFLINE-FIRST</span>
+          <h2>Le réseau peut tomber.<br><span>Votre maintenance, non.</span></h2>
+          <p>Les sous-sols, chambres froides et locaux techniques ne sont pas toujours bien couverts. L'application technicien continue de fonctionner hors ligne puis synchronise les données au retour de la connexion.</p>
+
+          <ul class="offline-list">
+            <li><span><svg><use href="#i-check"/></svg></span><div><b>Planning disponible hors connexion</b><small>Ordres de travail et informations essentielles déjà sur le téléphone.</small></div></li>
+            <li><span><svg><use href="#i-check"/></svg></span><div><b>Diagnostic, photos et compteurs</b><small>La saisie terrain continue normalement, même sans réseau.</small></div></li>
+            <li><span><svg><use href="#i-check"/></svg></span><div><b>Synchronisation automatique</b><small>Les données remontent dès que la connexion revient.</small></div></li>
+          </ul>
+
+          <a href="#contact" class="btn-light">Découvrir la version terrain <svg><use href="#i-arrow"/></svg></a>
+        </div>
+
+        <div class="offline-visual reveal delay-1">
+          <div class="signal-lines"><i></i><i></i><i></i><i></i></div>
+          <div class="field-phone">
+            <div class="field-notch"></div>
+            <div class="field-screen">
+              <div class="field-status"><span>9:41</span><span>● ● ▰</span></div>
+              <div class="field-head"><img src="assets/logo-mark.png" alt=""><b>WËR ASSET</b><span class="offline-chip"><i></i> Hors ligne</span></div>
+              <div class="field-content">
+                <small>BONJOUR, FATOU</small><h4>3 interventions aujourd'hui</h4>
+                <div class="field-job critical"><time>08:00</time><div><span>CRITIQUE</span><b>Service 500H</b><small>GE-001 · Hôtel Savana</small></div><i>›</i></div>
+                <div class="field-job"><time>11:30</time><div><span>PRÉVENTIF</span><b>Nettoyage filtres</b><small>AC-014 · Bloc principal</small></div><i>›</i></div>
+                <div class="field-job"><time>16:00</time><div><span>INSPECTION</span><b>Relevé compteur</b><small>PM-008 · Rés. Almadies</small></div><i>›</i></div>
+              </div>
+              <div class="field-nav"><span>⌂<small>Accueil</small></span><span>◇<small>Tickets</small></span><b>⌗</b><span>▣<small>Actifs</small></span><span>◉<small>Profil</small></span></div>
+            </div>
+          </div>
+          <div class="sync-float"><span class="sync-icon"><svg><use href="#i-cloud"/></svg></span><div><b>12 actions en attente</b><small>Synchronisation automatique</small></div><i class="sync-spinner"></i></div>
+          <div class="battery-float"><b>100%</b><span>Fonctionnel hors réseau</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PERSONAS -->
+    <section class="section solutions-section" id="solutions">
+      <div class="container">
+        <div class="section-heading split reveal">
+          <div><span class="eyebrow">UNE PLATEFORME. PLUSIEURS MÉTIERS.</span><h2>Chacun voit ce dont<br><span>il a réellement besoin.</span></h2></div>
+          <p>WËR ASSET adapte l'information et les actions aux rôles terrain et décisionnels, sans noyer les utilisateurs dans des écrans inutiles.</p>
+        </div>
+
+        <div class="persona-tabs reveal">
+          <button class="active" data-persona="direction">Direction</button>
+          <button data-persona="maintenance">Responsable maintenance</button>
+          <button data-persona="technicien">Technicien</button>
+          <button data-persona="site">Responsable de site</button>
+          <button data-persona="magasin">Magasinier</button>
+        </div>
+
+        <div class="persona-shell reveal">
+          <div class="persona-copy">
+            <span class="persona-kicker" id="personaKicker">DIRECTION GÉNÉRALE</span>
+            <h3 id="personaTitle">Pilotez le parc au lieu de subir les coûts.</h3>
+            <p id="personaText">Une lecture consolidée de la disponibilité, des coûts, des dérives et des équipements qui commencent à coûter trop cher.</p>
+            <ul id="personaList">
+              <li><svg><use href="#i-check"/></svg> Disponibilité globale du parc</li>
+              <li><svg><use href="#i-check"/></svg> Coûts par site, catégorie et fournisseur</li>
+              <li><svg><use href="#i-check"/></svg> TCO et top équipements coûteux</li>
+            </ul>
+          </div>
+
+          <div class="persona-ui">
+            <div class="persona-dashboard">
+              <div class="pd-head"><span id="pdLabel">Vue Direction</span><strong>Hôtel Savana</strong></div>
+              <div class="pd-kpis">
+                <div><small>Disponibilité</small><strong>86%</strong><span>+7 pts</span></div>
+                <div><small>Coût / actif</small><strong>4 883 F</strong><span>−8.6%</span></div>
+                <div><small>Tickets critiques</small><strong>2</strong><span class="red">Action</span></div>
+              </div>
+              <div class="pd-main">
+                <div class="pd-chart"><div class="pd-chart-head"><b>Coûts de maintenance</b><small>6 derniers mois</small></div><svg viewBox="0 0 480 160" preserveAspectRatio="none"><path class="g" d="M0 30H480M0 70H480M0 110H480M0 150H480"/><path class="a" d="M0 120 C60 100,80 70,140 82 S230 130,280 96 S360 65,410 80 S445 82,480 50L480 160H0Z"/><path class="l" d="M0 120 C60 100,80 70,140 82 S230 130,280 96 S360 65,410 80 S445 82,480 50"/></svg></div>
+                <div class="pd-ranking"><b>Actifs à surveiller</b><div><span>GE-001</span><em>2.84M</em></div><div><span>AC-014</span><em>1.62M</em></div><div><span>EL-002</span><em>1.18M</em></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIFFERENTIATORS -->
+    <section class="section advantage-section">
+      <div class="container">
+        <div class="section-heading centered reveal">
+          <span class="eyebrow">FAIT POUR LE MARCHÉ LOCAL</span>
+          <h2>La puissance d'un SaaS moderne.<br><span>Avec les réalités africaines en tête.</span></h2>
+        </div>
+
+        <div class="advantage-grid">
+          <article class="adv-card reveal"><div class="adv-icon"><svg><use href="#i-mobile"/></svg></div><h3>Mobile d'abord</h3><p>Des parcours courts et lisibles pour des utilisateurs terrain qui n'ont pas besoin d'être experts du logiciel.</p></article>
+          <article class="adv-card reveal delay-1"><div class="adv-icon"><svg><use href="#i-cloud"/></svg></div><h3>Hors ligne</h3><p>Le technicien reste opérationnel dans les locaux techniques et sous-sols où le réseau est faible ou absent.</p></article>
+          <article class="adv-card reveal delay-2"><div class="adv-icon"><svg><use href="#i-bell"/></svg></div><h3>Notifications utiles</h3><p>Application, email et WhatsApp pour toucher l'utilisateur sur les canaux réellement utilisés au quotidien.</p></article>
+          <article class="adv-card reveal delay-3"><div class="adv-icon"><span class="money">F</span></div><h3>Facturation locale</h3><p>Tarification en FCFA et intégration prévue des moyens de paiement adaptés aux entreprises sénégalaises.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="section pricing-section" id="pricing">
+      <div class="container">
+        <div class="section-heading centered reveal">
+          <span class="eyebrow">DES OFFRES QUI GRANDISSENT AVEC VOTRE PARC</span>
+          <h2>Commencez petit.<br><span>Industrialisez ensuite.</span></h2>
+          <p>La tarification finale sera validée avec le premier client pilote. La structure ci-dessous correspond aux paliers fonctionnels du produit.</p>
+        </div>
+
+        <div class="pricing-grid reveal">
+          <article class="price-card">
+            <div class="price-head"><span>Starter</span><b>0 — 50</b><small>équipements</small></div>
+            <p>Pour un site unique qui veut abandonner Excel et centraliser son parc.</p>
+            <ul><li><svg><use href="#i-check"/></svg> Identité & QR équipement</li><li><svg><use href="#i-check"/></svg> Tickets & historique</li><li><svg><use href="#i-check"/></svg> Maintenance préventive</li><li><svg><use href="#i-check"/></svg> Dashboard essentiel</li></ul>
+            <a href="#contact">Nous contacter <svg><use href="#i-arrow"/></svg></a>
+          </article>
+          <article class="price-card featured">
+            <div class="popular">CIBLE DU PILOTE</div>
+            <div class="price-head"><span>Essentiel</span><b>51 — 250</b><small>équipements</small></div>
+            <p>Le cœur de WËR ASSET pour les hôtels et organisations avec un parc technique structuré.</p>
+            <ul><li><svg><use href="#i-check"/></svg> Tout Starter</li><li><svg><use href="#i-check"/></svg> Application technicien offline</li><li><svg><use href="#i-check"/></svg> Pièces & stock</li><li><svg><use href="#i-check"/></svg> Fournisseurs, SLA & garanties</li></ul>
+            <a href="#contact">Demander un pilote <svg><use href="#i-arrow"/></svg></a>
+          </article>
+          <article class="price-card">
+            <div class="price-head"><span>Business</span><b>251 — 1 000</b><small>équipements</small></div>
+            <p>Pour les grands établissements et les organisations multi-sites.</p>
+            <ul><li><svg><use href="#i-check"/></svg> Tout Essentiel</li><li><svg><use href="#i-check"/></svg> Pilotage multi-sites</li><li><svg><use href="#i-check"/></svg> Reporting & TCO avancé</li><li><svg><use href="#i-check"/></svg> Accompagnement dédié</li></ul>
+            <a href="#contact">Parler à l'équipe <svg><use href="#i-arrow"/></svg></a>
+          </article>
+          <article class="price-card enterprise">
+            <div class="price-head"><span>Entreprise</span><b>1 000+</b><small>équipements</small></div>
+            <p>Un déploiement adapté à votre organisation, vos processus et vos sites.</p>
+            <ul><li><svg><use href="#i-check"/></svg> Périmètre personnalisé</li><li><svg><use href="#i-check"/></svg> Support & onboarding dédiés</li><li><svg><use href="#i-check"/></svg> Gouvernance & sécurité</li><li><svg><use href="#i-check"/></svg> Tarification négociée</li></ul>
+            <a href="#contact">Construire l'offre <svg><use href="#i-arrow"/></svg></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PILOT -->
+    <section class="section pilot-section" id="contact">
+      <div class="container">
+        <div class="pilot-shell reveal">
+          <div class="pilot-bg-grid"></div>
+          <div class="pilot-copy">
+            <div class="hero-badge dark-badge"><span></span> Programme pilote · Dakar</div>
+            <h2>Et si votre prochain<br>audit maintenance commençait <span>par un scan ?</span></h2>
+            <p>WËR ASSET recherche des établissements pilotes prêts à co-construire une nouvelle façon de suivre leurs équipements techniques.</p>
+            <div class="pilot-details">
+              <div><b>50 — 300</b><small>équipements cibles</small></div>
+              <div><b>2 — 3 mois</b><small>d'utilisation réelle</small></div>
+              <div><b>5 — 15</b><small>utilisateurs actifs</small></div>
+            </div>
+          </div>
+
+          <form class="pilot-form" id="pilotForm">
+            <div class="form-top"><span class="eyebrow">DEMANDER UNE DÉMO</span><h3>Parlons de votre parc.</h3><p>Quelques informations suffisent pour préparer un premier échange.</p></div>
+            <div class="form-row"><label>Nom & prénom<input required placeholder="Votre nom"></label><label>Entreprise<input required placeholder="Nom de l'organisation"></label></div>
+            <div class="form-row"><label>Email professionnel<input required type="email" placeholder="vous@entreprise.com"></label><label>Téléphone<input placeholder="+221 77 000 00 00"></label></div>
+            <label>Votre parc<select><option>Moins de 50 équipements</option><option>50 à 250 équipements</option><option>250 à 1 000 équipements</option><option>Plus de 1 000 équipements</option></select></label>
+            <label>Votre besoin<textarea rows="3" placeholder="Ex. Nous gérons un hôtel avec groupes électrogènes, climatiseurs, chambres froides..."></textarea></label>
+            <button type="submit">Demander un pilote <svg><use href="#i-arrow"/></svg></button>
+            <small class="form-note">Aucun engagement. Cette démonstration sert à comprendre vos besoins avant tout déploiement.</small>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section faq-section">
+      <div class="container faq-grid">
+        <div class="faq-intro reveal">
+          <span class="eyebrow">QUESTIONS FRÉQUENTES</span>
+          <h2>Avant de<br><span>commencer.</span></h2>
+          <p>Les réponses essentielles sur le fonctionnement de WËR ASSET et le pilote.</p>
+        </div>
+        <div class="faq-list reveal delay-1">
+          <article class="faq-item open">
+            <button><span>Faut-il installer une application pour scanner un équipement ?</span><svg class="plus"><use href="#i-minus"/></svg></button>
+            <div class="faq-answer"><p>Non pour le signalement simple : le scan QR peut ouvrir directement la fiche équipement dans le navigateur mobile. L'application technicien est conçue comme une PWA pour les usages terrain avancés et hors ligne.</p></div>
+          </article>
+          <article class="faq-item">
+            <button><span>WËR ASSET fonctionne-t-il sans connexion internet ?</span><svg class="plus"><use href="#i-plus"/></svg></button>
+            <div class="faq-answer"><p>La version technicien est pensée offline-first : les ordres de travail, diagnostics, photos, relevés de compteur et clôtures peuvent être saisis hors ligne puis synchronisés au retour du réseau.</p></div>
+          </article>
+          <article class="faq-item">
+            <button><span>Quels types d'équipements peut-on suivre ?</span><svg class="plus"><use href="#i-plus"/></svg></button>
+            <div class="faq-answer"><p>Le produit cible les équipements techniques critiques : groupes électrogènes, climatisation, pompes, chambres froides, ascenseurs et autres actifs nécessitant un historique et une maintenance régulière.</p></div>
+          </article>
+          <article class="faq-item">
+            <button><span>À qui s'adresse le pilote ?</span><svg class="plus"><use href="#i-plus"/></svg></button>
+            <div class="faq-answer"><p>Le premier vertical est l'hôtellerie. Le profil recherché est un hôtel à Dakar ou environs disposant d'environ 50 à 300 équipements et d'une équipe technique interne ou de prestataires réguliers.</p></div>
+          </article>
+          <article class="faq-item">
+            <button><span>Les prix sont-ils déjà fixés ?</span><svg class="plus"><use href="#i-plus"/></svg></button>
+            <div class="faq-answer"><p>Les paliers sont définis, mais les montants précis doivent être validés avec le premier client pilote afin d'aligner la tarification sur la valeur réellement perçue.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a class="brand brand-footer" href="#top"><img src="assets/logo-mark.png" alt=""><span>WËR <b>ASSET</b></span></a>
+          <p>Chaque équipement a une histoire.<br>Wër Asset la garde.</p>
+          <div class="made-in"><span>🇸🇳</span> Conçu au Sénégal, pensé pour les organisations africaines.</div>
+        </div>
+        <div class="footer-col"><b>Produit</b><a href="#features">Fonctionnalités</a><a href="#how">Comment ça marche</a><a href="#pricing">Offres</a><a href="#contact">Pilote</a></div>
+        <div class="footer-col"><b>Solutions</b><a href="#solutions">Direction</a><a href="#solutions">Maintenance</a><a href="#solutions">Techniciens</a><a href="#solutions">Multi-sites</a></div>
+        <div class="footer-col"><b>Ressources</b><a href="#faq">FAQ</a><a href="#product">À propos du produit</a><a href="#contact">Nous contacter</a></div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 WËR ASSET. Tous droits réservés.</span><span>Scannez. Identifiez. Maintenez. Tracez.</span></div>
+    </div>
+  </footer>
+
+  <!-- Product demo modal -->
+  <div class="demo-modal" id="demoModal">
+    <div class="demo-backdrop"></div>
+    <div class="demo-dialog">
+      <button class="demo-close" id="closeDemo"><svg><use href="#i-close"/></svg></button>
+      <div class="demo-copy">
+        <span class="eyebrow">APERÇU PRODUIT</span>
+        <h3>WËR ASSET en 30 secondes.</h3>
+        <p>Le cœur de l'expérience : identifier l'actif, agir rapidement, garder une trace exploitable.</p>
+      </div>
+      <div class="demo-steps">
+        <button class="active" data-demo="scan"><span>01</span><b>Scanner</b></button>
+        <button data-demo="ticket"><span>02</span><b>Ticket</b></button>
+        <button data-demo="work"><span>03</span><b>Intervention</b></button>
+        <button data-demo="history"><span>04</span><b>Historique</b></button>
+      </div>
+      <div class="demo-stage">
+        <div class="demo-scene active" id="demo-scan">
+          <div class="demo-phone">
+            <div class="demo-mobile-head">Scanner un QR code <span>⚡</span></div>
+            <div class="demo-camera"><div class="demo-frame"><i></i><i></i><i></i><i></i><svg><use href="#i-qr"/></svg></div><p>EQP-0001 détecté</p></div>
+          </div>
+          <div class="demo-explain"><span>01 — IDENTIFICATION</span><h4>La bonne fiche, instantanément.</h4><p>Le QR code élimine les recherches manuelles et réduit les erreurs d'identification.</p></div>
+        </div>
+        <div class="demo-scene" id="demo-ticket">
+          <div class="demo-ticket-card"><span class="badge-demo">CRITIQUE</span><h4>Climatisation ne refroidit plus</h4><p>AC-014 · Hôtel Savana · Bloc principal</p><div class="demo-meta"><span>📷 2 photos</span><span>⏱ il y a 2 min</span></div><button>Créer l'ordre de travail →</button></div>
+          <div class="demo-explain"><span>02 — SIGNALEMENT</span><h4>Un ticket complet en moins d'une minute.</h4><p>Description, photo, urgence et équipement sont rattachés dès la création.</p></div>
+        </div>
+        <div class="demo-scene" id="demo-work">
+          <div class="demo-work"><div><span>INTERVENTION EN COURS</span><b>00:36:24</b></div><h4>Service 500H · GE-001</h4><ul><li>✓ Contrôle niveau huile</li><li>✓ Remplacement filtre</li><li>○ Inspection fuite</li></ul><button>Clôturer l'intervention</button></div>
+          <div class="demo-explain"><span>03 — EXÉCUTION</span><h4>Le terrain documente ce qui a vraiment été fait.</h4><p>Temps, diagnostic, opérations, pièces, compteurs et photos alimentent automatiquement l'historique.</p></div>
+        </div>
+        <div class="demo-scene" id="demo-history">
+          <div class="demo-timeline"><div><i></i><span><small>18 MAI 2026</small><b>Maintenance 500H terminée</b><p>Filtre huile remplacé · 2h14 · 128 500 FCFA</p></span></div><div><i></i><span><small>02 AVRIL 2026</small><b>Incident batterie</b><p>Batterie remplacée sous garantie</p></span></div><div><i></i><span><small>12 MAI 2021</small><b>Équipement installé</b><p>Groupe électrogène SDMO · 15 000 000 FCFA</p></span></div></div>
+          <div class="demo-explain"><span>04 — TRAÇABILITÉ</span><h4>Chaque équipement garde sa mémoire.</h4><p>La direction peut enfin comprendre les coûts et prendre des décisions à partir de faits.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"><span><svg><use href="#i-check"/></svg></span><div><b>Demande enregistrée</b><small>Prototype : aucun message n'a réellement été envoyé.</small></div></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

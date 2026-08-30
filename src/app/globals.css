@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --teal-950: #052e2d;
+  --teal-900: #073a38;
+  --teal-800: #0e4b4a;
+  --teal-700: #12625f;
+  --teal-600: #18746f;
+  --teal-500: #1f8d86;
+  --teal-100: #def0ee;
+  --teal-50: #f0f8f7;
+  --gold: #f2b01e;
+  --gold-2: #ffd66b;
+  --ink: #172326;
+  --muted: #6f7e80;
+  --line: #e4ebea;
+  --bg: #f7f9f8;
+  --card: #ffffff;
+  --red: #e55e5e;
+  --green: #23a66a;
+  --blue: #4c8ed8;
+  --violet: #7a6bd1;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--bg);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f4;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5d4;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a8a6;
+}
+
+/* Hide scrollbar for tabs */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
