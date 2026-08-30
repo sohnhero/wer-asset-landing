@@ -14,15 +14,15 @@ export function PersonaSection() {
   const personaKeys = Object.keys(personasSectionData.personas);
 
   return (
-    <section id="solutions" className="relative bg-white py-16 sm:py-28 lg:py-32">
+    <section id="solutions" className="relative bg-white py-14 sm:py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         {/* Section Heading */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 sm:mb-12">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 sm:mb-10">
           <div className="max-w-2xl">
             <span className="text-xs font-extrabold tracking-widest text-teal-800 uppercase">
               {personasSectionData.eyebrow}
             </span>
-            <h2 className="mt-3 font-sora text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-brand-ink">
+            <h2 className="mt-2 font-sora text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-brand-ink">
               {personasSectionData.titlePrimary} <br />
               <span className="text-brand-muted font-normal">
                 {personasSectionData.titleHighlight}
@@ -52,20 +52,75 @@ export function PersonaSection() {
           })}
         </div>
 
-        {/* Main Shell */}
-        <div className="mt-4 sm:mt-6 overflow-hidden rounded-3xl border border-brand-line/80 bg-gradient-to-br from-[#f8fbfa] to-[#eef5f4] p-5 sm:p-10 lg:p-12 shadow-glow">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        {/* MOBILE ONLY (< lg): Compact Unified Role Card (~340px height) */}
+        <div className="lg:hidden rounded-3xl border border-brand-line/80 bg-gradient-to-br from-[#f8fbfa] to-[#eef5f4] p-5 shadow-sm">
+          <div className="flex items-center justify-between border-b border-brand-line/60 pb-2.5 mb-3">
+            <span className="text-[10px] font-extrabold tracking-wider text-teal-800 uppercase">
+              {persona.kicker}
+            </span>
+            <span className="text-[10px] font-bold text-brand-muted">
+              {persona.siteName}
+            </span>
+          </div>
+
+          <h3 className="font-sora text-base sm:text-lg font-bold text-brand-ink leading-snug">
+            {persona.title}
+          </h3>
+
+          <p className="mt-1 text-xs text-brand-muted leading-relaxed">
+            {persona.description}
+          </p>
+
+          {/* 3 Compact KPIs in 1 Responsive Row */}
+          <div className="mt-3.5 grid grid-cols-3 gap-2 bg-white rounded-2xl p-2.5 border border-brand-line shadow-xs">
+            {persona.kpis.map((kpi, idx) => (
+              <div key={idx} className="flex flex-col items-center text-center">
+                <span className="text-[8.5px] text-brand-muted truncate max-w-full">
+                  {kpi.label}
+                </span>
+                <b className="font-sora text-sm font-bold text-brand-ink my-0.5">
+                  {kpi.value}
+                </b>
+                <span
+                  className={`text-[8px] font-bold px-1.5 py-0.2 rounded-full ${
+                    kpi.isAction
+                      ? "bg-rose-50 text-rose-700 border border-rose-200"
+                      : "bg-emerald-50 text-emerald-700 border border-emerald-200"
+                  }`}
+                >
+                  {kpi.trend}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* Key Bullet Highlights */}
+          <div className="mt-3.5 space-y-1.5 border-t border-brand-line/60 pt-2.5">
+            {persona.highlights.slice(0, 2).map((highlight, idx) => (
+              <div key={idx} className="flex items-center gap-2 text-[11px] font-medium text-brand-ink">
+                <span className="flex h-3.5 w-3.5 flex-none items-center justify-center rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200">
+                  <Icon name="check" className="h-2 w-2" />
+                </span>
+                <span className="truncate">{highlight}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* DESKTOP VIEW (lg+): Full 2-Column Experience with Rich Dashboard Mockup */}
+        <div className="hidden lg:block overflow-hidden rounded-3xl border border-brand-line/80 bg-gradient-to-br from-[#f8fbfa] to-[#eef5f4] p-10 lg:p-12 shadow-glow">
+          <div className="grid grid-cols-12 gap-12 items-center">
             {/* Left Copy */}
-            <div className="lg:col-span-5 flex flex-col items-start">
+            <div className="col-span-5 flex flex-col items-start">
               <span className="text-xs font-extrabold tracking-wider text-teal-800 uppercase">
                 {persona.kicker}
               </span>
 
-              <h3 className="mt-3 font-sora text-2xl sm:text-3xl font-bold text-brand-ink leading-tight">
+              <h3 className="mt-3 font-sora text-3xl font-bold text-brand-ink leading-tight">
                 {persona.title}
               </h3>
 
-              <p className="mt-4 text-sm md:text-base leading-relaxed text-brand-muted">
+              <p className="mt-4 text-base leading-relaxed text-brand-muted">
                 {persona.description}
               </p>
 
@@ -73,7 +128,7 @@ export function PersonaSection() {
                 {persona.highlights.map((highlight, idx) => (
                   <li
                     key={idx}
-                    className="flex items-center gap-3 text-xs md:text-sm font-semibold text-brand-ink"
+                    className="flex items-center gap-3 text-sm font-semibold text-brand-ink"
                   >
                     <span className="flex h-5 w-5 flex-none items-center justify-center rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200">
                       <Icon name="check" className="h-3.5 w-3.5" />
@@ -85,7 +140,7 @@ export function PersonaSection() {
             </div>
 
             {/* Right Persona Dashboard Mockup */}
-            <div className="lg:col-span-7">
+            <div className="col-span-7">
               <div className="rounded-2xl border border-brand-line bg-white p-6 shadow-xl">
                 {/* Header */}
                 <div className="flex items-center justify-between border-b border-brand-line/60 pb-3">
@@ -107,7 +162,7 @@ export function PersonaSection() {
                       <small className="block text-[10px] text-brand-muted">
                         {kpi.label}
                       </small>
-                      <strong className="block font-sora text-lg sm:text-xl font-bold text-brand-ink my-1">
+                      <strong className="block font-sora text-xl font-bold text-brand-ink my-1">
                         {kpi.value}
                       </strong>
                       <span
@@ -124,9 +179,9 @@ export function PersonaSection() {
                 </div>
 
                 {/* Main Area: Vector Chart + Top items ranking */}
-                <div className="mt-4 grid grid-cols-1 sm:grid-cols-12 gap-3">
+                <div className="mt-4 grid grid-cols-12 gap-3">
                   {/* Vector Chart */}
-                  <div className="sm:col-span-7 rounded-xl border border-brand-line bg-brand-bg/30 p-3">
+                  <div className="col-span-7 rounded-xl border border-brand-line bg-brand-bg/30 p-3">
                     <div className="mb-2">
                       <b className="block text-xs font-bold text-brand-ink">
                         {persona.chartData.title}
@@ -153,7 +208,7 @@ export function PersonaSection() {
                   </div>
 
                   {/* Top Assets */}
-                  <div className="sm:col-span-5 rounded-xl border border-brand-line bg-brand-bg/30 p-3">
+                  <div className="col-span-5 rounded-xl border border-brand-line bg-brand-bg/30 p-3">
                     <b className="block text-xs font-bold text-brand-ink mb-2">
                       Actifs à surveiller
                     </b>
