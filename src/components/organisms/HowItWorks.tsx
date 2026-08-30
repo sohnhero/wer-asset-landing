@@ -6,15 +6,17 @@ import { Icon } from "../atoms/Icon";
 import { TabButton } from "../molecules/TabButton";
 import { howItWorksData } from "@/data/howItWorks";
 
+import { MotionFadeIn } from "../atoms/Motion";
+
 export function HowItWorks() {
   const [activeStep, setActiveStep] = useState<number>(1);
   const current = howItWorksData.steps[activeStep] || howItWorksData.steps[1];
 
   return (
-    <section id="how" className="relative bg-white py-16 sm:py-28 lg:py-32">
+    <section id="how" className="relative bg-white py-16 sm:py-28 lg:py-32 overflow-hidden">
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         {/* Section Heading */}
-        <div className="mx-auto max-w-3xl text-center mb-8 sm:mb-16">
+        <MotionFadeIn className="mx-auto max-w-3xl text-center mb-8 sm:mb-16">
           <span className="text-xs font-extrabold tracking-widest text-teal-800 uppercase">
             {howItWorksData.eyebrow}
           </span>
@@ -22,7 +24,7 @@ export function HowItWorks() {
             {howItWorksData.titlePrimary} <br />
             <span className="text-[#F2B01E] font-normal">{howItWorksData.titleHighlight}</span>
           </h2>
-        </div>
+        </MotionFadeIn>
 
         {/* MOBILE ONLY (< lg): Compact, App-Like Interactive Step Experience */}
         <div className="lg:hidden">
@@ -149,7 +151,7 @@ export function HowItWorks() {
         </div>
 
         {/* DESKTOP VIEW (lg+): Full 2-Column Experience with Large Phone Simulation */}
-        <div className="hidden lg:block overflow-hidden rounded-3xl border border-brand-line/80 bg-gradient-to-br from-[#fbfdfc] to-[#f2f7f6] shadow-glow">
+        <MotionFadeIn delay={0.1} className="hidden lg:block overflow-hidden rounded-3xl border border-brand-line/80 bg-gradient-to-br from-[#fbfdfc] to-[#f2f7f6] shadow-glow">
           {/* Top Step Tabs */}
           <div className="grid grid-cols-4 border-b border-brand-line bg-white/70 backdrop-blur-md">
             {[1, 2, 3, 4].map((stepNum) => {
@@ -399,7 +401,7 @@ export function HowItWorks() {
               </div>
             </div>
           </div>
-        </div>
+        </MotionFadeIn>
       </div>
     </section>
   );

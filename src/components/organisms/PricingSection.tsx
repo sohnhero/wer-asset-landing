@@ -1,9 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import { Button } from "../atoms/Button";
-import { Icon } from "../atoms/Icon";
 import { pricingSectionData } from "@/data/pricing";
+import { MotionFadeIn, MotionStagger, fadeInUpVariants } from "../atoms/Motion";
 
 export function PricingSection() {
   const { eyebrow, titlePrimary, titleHighlight, subtitle, plans } =
@@ -13,10 +14,10 @@ export function PricingSection() {
   const currentPlan = plans.find((p) => p.id === selectedMobilePlan) || plans[1];
 
   return (
-    <section id="pricing" className="relative bg-white py-16 sm:py-28 lg:py-32">
+    <section id="pricing" className="relative bg-white py-16 sm:py-28 lg:py-32 overflow-hidden">
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         {/* Section Heading */}
-        <div className="mx-auto max-w-3xl text-center mb-10 sm:mb-16">
+        <MotionFadeIn className="mx-auto max-w-3xl text-center mb-10 sm:mb-16">
           <span className="text-xs font-extrabold tracking-widest text-teal-800 uppercase">
             {eyebrow}
           </span>
@@ -27,11 +28,11 @@ export function PricingSection() {
           <p className="mt-3 text-xs sm:text-sm md:text-base leading-relaxed text-brand-muted">
             {subtitle}
           </p>
-        </div>
+        </MotionFadeIn>
 
-        {/* MOBILE ONLY (< sm): Interactive Pricing Switcher (Eliminates 1,500px of scrolling) */}
+        {/* MOBILE ONLY (< sm): Interactive Pricing Switcher */}
         <div className="sm:hidden">
-          {/* Mobile Plan Segmented Tabs - Zero Horizontal Scroll */}
+          {/* Mobile Plan Segmented Tabs */}
           <div className="grid grid-cols-4 gap-1 p-1 bg-slate-100 rounded-2xl border border-brand-line mb-4">
             {plans.map((plan) => (
               <button
@@ -129,18 +130,19 @@ export function PricingSection() {
           </article>
         </div>
 
-        {/* TABLET & DESKTOP (sm+): 4 Pricing Cards Grid */}
-        <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+        {/* TABLET & DESKTOP (sm+): 4 Pricing Cards Grid with Staggered Scroll Reveal */}
+        <MotionStagger stagger={0.12} className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
           {plans.map((plan) => {
             const isFeatured = plan.isFeatured;
 
             return (
-              <article
+              <motion.article
                 key={plan.id}
+                variants={fadeInUpVariants}
                 className={`relative flex flex-col justify-between rounded-3xl p-8 transition-all duration-300 ${
                   isFeatured
-                    ? "bg-gradient-to-b from-[#073a38] via-[#0d4d4a] to-[#0e4b4a] text-white shadow-2xl lg:-translate-y-3 border border-teal-600/40"
-                    : "border border-brand-line/80 bg-white shadow-sm hover:border-teal-300 hover:shadow-card"
+                    ? "bg-gradient-to-b from-[#073a38] via-[#0d4d4a] to-[#0e4b4a] text-white shadow-2xl lg:-translate-y-3 border border-teal-600/40 hover:-translate-y-4"
+                    : "border border-brand-line/80 bg-white shadow-sm hover:border-teal-300 hover:shadow-card hover:-translate-y-1.5"
                 }`}
               >
                 {isFeatured && plan.featuredBadge && (
@@ -212,10 +214,10 @@ export function PricingSection() {
                 >
                   {plan.ctaLabel}
                 </Button>
-              </article>
+              </motion.article>
             );
           })}
-        </div>
+        </MotionStagger>
       </div>
     </section>
   );

@@ -7,6 +7,8 @@ import { FormField } from "../molecules/FormField";
 import { Toast } from "./Toast";
 import { pilotSectionData } from "@/data/pilot";
 
+import { MotionFadeIn } from "../atoms/Motion";
+
 export function PilotSection() {
   const [formData, setFormData] = useState({
     fullName: "",
@@ -48,7 +50,7 @@ export function PilotSection() {
     pilotSectionData;
 
   return (
-    <section id="contact" className="relative bg-white py-12 sm:py-24 lg:py-32">
+    <section id="contact" className="relative bg-white py-12 sm:py-24 lg:py-32 overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#062f2e] via-[#0b4845] to-[#12615d] p-4 sm:p-10 lg:p-16 text-white shadow-glow">
           {/* Background Grid Pattern */}
@@ -159,7 +161,7 @@ export function PilotSection() {
           {/* DESKTOP VIEW (lg+): Full 2-Column Experience */}
           <div className="relative z-10 hidden lg:grid grid-cols-12 gap-16 items-center">
             {/* Left Copy */}
-            <div className="col-span-6 flex flex-col items-start">
+            <MotionFadeIn className="col-span-6 flex flex-col items-start">
               <Badge variant="dark" dot className="mb-6 text-xs">
                 {badge}
               </Badge>
@@ -186,10 +188,10 @@ export function PilotSection() {
                   </div>
                 ))}
               </div>
-            </div>
+            </MotionFadeIn>
 
             {/* Right Interactive Pilot Form */}
-            <div className="col-span-6">
+            <MotionFadeIn delay={0.15} className="col-span-6">
               <form
                 onSubmit={handleSubmit}
                 className="rounded-2xl bg-white p-8 text-brand-ink shadow-2xl"
@@ -290,7 +292,7 @@ export function PilotSection() {
                   </small>
                 </div>
               </form>
-            </div>
+            </MotionFadeIn>
           </div>
         </div>
       </div>

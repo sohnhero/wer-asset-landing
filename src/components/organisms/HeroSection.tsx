@@ -2,10 +2,12 @@
 
 import React from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { Button } from "../atoms/Button";
 import { Icon } from "../atoms/Icon";
 import { GlowMesh } from "../atoms/GlowMesh";
 import { heroContent } from "@/data/hero";
+import { EASING_PREMIUM } from "../atoms/Motion";
 
 interface HeroSectionProps {
   onOpenDemo: () => void;
@@ -22,29 +24,49 @@ export function HeroSection({ onOpenDemo }: HeroSectionProps) {
           <div className="flex flex-col items-center text-center lg:items-start lg:text-left col-span-12 lg:col-span-6 xl:col-span-5 z-10 max-w-lg mx-auto lg:mx-0 lg:scale-[1.14] xl:scale-[1.18] origin-center lg:origin-left">
             
             {/* Top Pill Badge */}
-            <div className="mb-3.5 inline-flex items-center gap-2 rounded-full border border-teal-600/20 bg-white/90 px-3.5 py-1.5 text-[11px] sm:text-xs font-bold text-teal-900 shadow-xs backdrop-blur-md">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.08, ease: EASING_PREMIUM }}
+              className="mb-3.5 inline-flex items-center gap-2 rounded-full border border-teal-600/20 bg-white/90 px-3.5 py-1.5 text-[11px] sm:text-xs font-bold text-teal-900 shadow-xs backdrop-blur-md"
+            >
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
               </span>
               <span>{heroContent.badge}</span>
-            </div>
+            </motion.div>
 
             {/* Hero Main Heading */}
-            <h1 className="font-sora text-[30px] xs:text-[34px] sm:text-4xl lg:text-4xl xl:text-5xl font-extrabold tracking-tight text-brand-ink leading-[1.16] sm:leading-[1.15]">
+            <motion.h1
+              initial={{ opacity: 0, y: 22 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: 0.16, ease: EASING_PREMIUM }}
+              className="font-sora text-[30px] xs:text-[34px] sm:text-4xl lg:text-4xl xl:text-5xl font-extrabold tracking-tight text-brand-ink leading-[1.16] sm:leading-[1.15]"
+            >
               {heroContent.titlePrimary}{" "}
               <span className="block bg-gradient-to-r from-teal-900 via-teal-700 to-emerald-600 bg-clip-text text-transparent mt-1 sm:mt-0">
                 {heroContent.titleHighlight}
               </span>
-            </h1>
+            </motion.h1>
 
             {/* Concise Description */}
-            <p className="mt-3 max-w-md lg:max-w-lg text-xs sm:text-sm lg:text-base leading-relaxed text-brand-muted">
+            <motion.p
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.24, ease: EASING_PREMIUM }}
+              className="mt-3 max-w-md lg:max-w-lg text-xs sm:text-sm lg:text-base leading-relaxed text-brand-muted"
+            >
               {heroContent.description}
-            </p>
+            </motion.p>
 
             {/* Actions */}
-            <div className="mt-5 sm:mt-6 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2.5 sm:gap-3 w-full sm:w-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.32, ease: EASING_PREMIUM }}
+              className="mt-5 sm:mt-6 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2.5 sm:gap-3 w-full sm:w-auto"
+            >
               <Button
                 href="#contact"
                 size="md"
@@ -66,10 +88,15 @@ export function HeroSection({ onOpenDemo }: HeroSectionProps) {
                 </span>
                 <span>{heroContent.ctaSecondary}</span>
               </button>
-            </div>
+            </motion.div>
 
-            {/* MOBILE ONLY: Live Interactive Micro-Preview Card (Brings real visual punch to mobile) */}
-            <div className="lg:hidden w-full max-w-sm mt-5 rounded-2xl border border-slate-200/90 bg-gradient-to-b from-white to-[#f8faf9] p-3.5 shadow-lg shadow-teal-950/5 text-left">
+            {/* MOBILE ONLY: Live Interactive Micro-Preview Card */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 16 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4, ease: EASING_PREMIUM }}
+              className="lg:hidden w-full max-w-sm mt-5 rounded-2xl border border-slate-200/90 bg-gradient-to-b from-white to-[#f8faf9] p-3.5 shadow-lg shadow-teal-950/5 text-left"
+            >
               <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
                 <div className="flex items-center gap-1.5">
                   <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
@@ -81,7 +108,7 @@ export function HeroSection({ onOpenDemo }: HeroSectionProps) {
               </div>
 
               <div className="mt-2.5 flex items-center gap-3">
-                <div className="flex h-10 w-10 flex-none items-center justify-center rounded-xl bg-gradient-to-br from-teal-950 via-teal-900 to-teal-800 text-white shadow-xs">
+                <div className="flex h-10 w-10 flex-none items-center justify-center rounded-xl bg-gradient-to-br from-teal-950 via-teal-900 to-teal-800 text-teal-100 shadow-xs">
                   <Icon name="qr" className="h-4 w-4" />
                 </div>
                 <div className="flex-1 min-w-0">
@@ -100,10 +127,15 @@ export function HeroSection({ onOpenDemo }: HeroSectionProps) {
                   <b className="text-teal-900 font-bold text-[10.5px]">Service 500H</b>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Trust Badges Bar */}
-            <div className="mt-4 sm:mt-7 grid grid-cols-3 gap-1.5 sm:gap-2.5 border-t border-brand-line/60 pt-3.5 sm:pt-5 w-full max-w-sm sm:max-w-none">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.44, ease: EASING_PREMIUM }}
+              className="mt-4 sm:mt-7 grid grid-cols-3 gap-1.5 sm:gap-2.5 border-t border-brand-line/60 pt-3.5 sm:pt-5 w-full max-w-sm sm:max-w-none"
+            >
               {heroContent.trustItems.map((item, idx) => (
                 <div
                   key={idx}
@@ -122,11 +154,16 @@ export function HeroSection({ onOpenDemo }: HeroSectionProps) {
                   </span>
                 </div>
               ))}
-            </div>
+            </motion.div>
           </div>
 
-          {/* Right Visual Column: Displayed ONLY on Desktop (Unchanged) */}
-          <div className="hidden lg:flex relative lg:col-span-6 xl:col-span-7 mt-6 lg:mt-0 items-center justify-end">
+          {/* Right Visual Column: Displayed ONLY on Desktop with Smooth Slide In + Subtle Floating */}
+          <motion.div
+            initial={{ opacity: 0, x: 45, scale: 0.96 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            transition={{ duration: 0.9, delay: 0.25, ease: EASING_PREMIUM }}
+            className="hidden lg:flex relative lg:col-span-6 xl:col-span-7 mt-6 lg:mt-0 items-center justify-end"
+          >
             <div className="relative w-[130%] sm:w-[150%] lg:w-[170%] xl:w-[185%] max-w-none flex items-center justify-end lg:-mr-24 xl:-mr-36 translate-x-3 sm:translate-x-6 lg:translate-x-10 xl:translate-x-14 lg:scale-110 xl:scale-120 origin-center lg:origin-right">
               <Image
                 src="/assets/good-one.png"
@@ -138,7 +175,7 @@ export function HeroSection({ onOpenDemo }: HeroSectionProps) {
                 className="w-full h-auto object-contain select-none pointer-events-none drop-shadow-2xl"
               />
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

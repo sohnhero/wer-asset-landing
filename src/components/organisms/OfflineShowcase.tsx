@@ -1,8 +1,11 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import { Button } from "../atoms/Button";
 import { Icon } from "../atoms/Icon";
 import { offlineSectionData } from "@/data/offline";
+import { MotionFadeIn } from "../atoms/Motion";
 
 export function OfflineShowcase() {
   const { eyebrow, titlePrimary, titleHighlight, description, highlights, ctaText } =
@@ -22,8 +25,8 @@ export function OfflineShowcase() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
-        {/* MOBILE ONLY (< lg): Clean, Fast & Compact Offline Showcase (no heavy image) */}
-        <div className="lg:hidden flex flex-col items-start text-left">
+        {/* MOBILE ONLY (< lg): Clean, Fast & Compact Offline Showcase */}
+        <MotionFadeIn className="lg:hidden flex flex-col items-start text-left">
           <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] font-extrabold tracking-widest text-teal-200 uppercase backdrop-blur-md">
             {eyebrow}
           </span>
@@ -64,12 +67,12 @@ export function OfflineShowcase() {
               {ctaText}
             </Button>
           </div>
-        </div>
+        </MotionFadeIn>
 
         {/* DESKTOP VIEW (lg+): Full 2-Column Experience with Large High-Impact Mockup */}
         <div className="hidden lg:grid grid-cols-12 gap-8 items-center min-h-[560px]">
           {/* Left Column */}
-          <div className="col-span-6 flex flex-col items-start z-10">
+          <MotionFadeIn className="col-span-6 flex flex-col items-start z-10">
             <span className="rounded-full border border-white/10 bg-white/5 px-3.5 py-1 text-xs font-extrabold tracking-widest text-teal-200 uppercase backdrop-blur-md">
               {eyebrow}
             </span>
@@ -112,10 +115,15 @@ export function OfflineShowcase() {
                 {ctaText}
               </Button>
             </div>
-          </div>
+          </MotionFadeIn>
 
-          {/* Right Column: Significantly Enlarged Smartphone Mockup */}
-          <div className="col-span-6 relative flex items-center justify-center h-full">
+          {/* Right Column: Significantly Enlarged Smartphone Mockup with Scroll Entrance */}
+          <MotionFadeIn
+            direction="left"
+            delay={0.18}
+            duration={0.8}
+            className="col-span-6 relative flex items-center justify-center h-full"
+          >
             <div className="relative w-[180%] xl:w-[200%] max-w-none flex items-center justify-center scale-[1.75] xl:scale-[1.95] origin-center">
               <Image
                 src="/assets/offline.png"
@@ -127,7 +135,7 @@ export function OfflineShowcase() {
                 className="w-full h-auto object-contain select-none pointer-events-none drop-shadow-2xl"
               />
             </div>
-          </div>
+          </MotionFadeIn>
         </div>
       </div>
     </section>

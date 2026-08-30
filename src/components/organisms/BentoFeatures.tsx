@@ -5,6 +5,9 @@ import Image from "next/image";
 import { Icon } from "../atoms/Icon";
 import { featuresSectionData } from "@/data/features";
 
+import { motion } from "framer-motion";
+import { MotionFadeIn, MotionStagger, fadeInUpVariants } from "../atoms/Motion";
+
 export function BentoFeatures() {
   const { eyebrow, titlePrimary, titleHighlight, subtitle, bentoItems } =
     featuresSectionData;
@@ -21,10 +24,10 @@ export function BentoFeatures() {
   ] as const;
 
   return (
-    <section id="features" className="relative bg-[#f4f7f6] py-16 sm:py-28 lg:py-32">
+    <section id="features" className="relative bg-[#f4f7f6] py-16 sm:py-28 lg:py-32 overflow-hidden">
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         {/* Section Heading */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 lg:mb-16">
+        <MotionFadeIn className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 lg:mb-16">
           <div className="max-w-2xl">
             <span className="text-xs font-extrabold tracking-widest text-teal-800 uppercase">
               {eyebrow}
@@ -37,7 +40,7 @@ export function BentoFeatures() {
           <p className="max-w-md text-xs sm:text-sm md:text-base leading-relaxed text-brand-muted">
             {subtitle}
           </p>
-        </div>
+        </MotionFadeIn>
 
         {/* MOBILE ONLY (< lg): Interactive Feature Switcher (Centered & Symmetrical) */}
         <div className="lg:hidden">
@@ -226,10 +229,13 @@ export function BentoFeatures() {
           </div>
         </div>
 
-        {/* DESKTOP VIEW (lg+): Full Asymmetric 5-Block Bento Grid */}
-        <div className="hidden lg:grid grid-cols-12 gap-6">
+        {/* DESKTOP VIEW (lg+): Full Asymmetric 5-Block Bento Grid with Staggered Scroll Reveal */}
+        <MotionStagger stagger={0.12} className="hidden lg:grid grid-cols-12 gap-6">
           {/* Bento 1: QR-First (Large Dark Card) */}
-          <article className="relative col-span-7 flex flex-col justify-between overflow-hidden rounded-3xl border border-teal-900/20 bg-gradient-to-br from-[#062e2d] via-[#0b4745] to-[#083533] p-8 sm:p-10 text-white shadow-glow min-h-[440px]">
+          <motion.article
+            variants={fadeInUpVariants}
+            className="relative col-span-7 flex flex-col justify-between overflow-hidden rounded-3xl border border-teal-900/20 bg-gradient-to-br from-[#062e2d] via-[#0b4745] to-[#083533] p-8 sm:p-10 text-white shadow-glow min-h-[440px]"
+          >
             <div className="relative z-10 max-w-md">
               <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-teal-200 border border-white/10 shadow-inner">
                 <Icon name="qr" className="h-5 w-5" />
@@ -282,10 +288,13 @@ export function BentoFeatures() {
                 </div>
               </div>
             </div>
-          </article>
+          </motion.article>
 
           {/* Bento 2: Maintenance Préventive */}
-          <article className="col-span-5 flex flex-col justify-between rounded-3xl border border-brand-line/80 bg-white p-8 shadow-sm transition-all duration-300 hover:shadow-card">
+          <motion.article
+            variants={fadeInUpVariants}
+            className="col-span-5 flex flex-col justify-between rounded-3xl border border-brand-line/80 bg-white p-8 shadow-sm transition-all duration-300 hover:shadow-card"
+          >
             <div>
               <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-amber-50 text-amber-800 border border-amber-100">
                 <Icon name="wrench" className="h-5 w-5" />
@@ -296,52 +305,44 @@ export function BentoFeatures() {
               <h3 className="mt-2 font-sora text-2xl font-bold text-brand-ink">
                 {bentoItems.preventive.title}
               </h3>
-              <p className="mt-3 text-xs md:text-sm text-brand-muted leading-relaxed">
+              <p className="mt-2.5 text-xs md:text-sm text-brand-muted leading-relaxed">
                 {bentoItems.preventive.description}
               </p>
             </div>
 
-            {/* Mini Calendar Schedule */}
-            <div className="mt-6 rounded-2xl border border-brand-line bg-brand-bg/60 p-4">
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-xs font-bold text-brand-ink">
-                  {bentoItems.preventive.monthLabel}
-                </span>
-                <span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-[10px] font-bold text-amber-800">
-                  {bentoItems.preventive.taskCount}
-                </span>
-              </div>
-              <div className="grid grid-cols-7 gap-1 text-center text-[10px] text-brand-muted font-semibold mb-2">
-                <span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span>
-                <span className="py-1">18</span>
-                <span className="py-1">19</span>
-                <span className="py-1 rounded-md bg-teal-900 text-white font-bold">20</span>
-                <span className="py-1 relative font-bold text-amber-800">21 <i className="absolute bottom-0.5 left-1/2 -translate-x-1/2 h-1 w-1 rounded-full bg-gold" /></span>
-                <span className="py-1 relative font-bold text-emerald-800">22 <i className="absolute bottom-0.5 left-1/2 -translate-x-1/2 h-1 w-1 rounded-full bg-emerald-500" /></span>
-                <span className="py-1">23</span>
-                <span className="py-1">24</span>
-              </div>
-              <div className="space-y-1.5 mt-3">
-                {bentoItems.preventive.tasks.map((task, idx) => (
-                  <div key={idx} className="flex items-center justify-between rounded-xl bg-white border border-brand-line p-2 text-xs">
-                    <div className="flex items-center gap-2">
-                      <span className={`h-2 w-2 rounded-full ${task.color === "red" ? "bg-rose-500" : "bg-teal-600"}`} />
-                      <div>
-                        <b className="block text-brand-ink text-[11px] leading-tight">{task.name}</b>
-                        <small className="text-[9px] text-brand-muted">{task.code} · {task.time}</small>
-                      </div>
+            {/* Task rows */}
+            <div className="mt-6 space-y-2.5">
+              {bentoItems.preventive.tasks.map((task, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-center justify-between rounded-xl border border-brand-line bg-brand-bg/50 px-4 py-3 text-xs shadow-xs"
+                >
+                  <div className="flex items-center gap-3">
+                    <span
+                      className={`h-2.5 w-2.5 rounded-full ${
+                        task.color === "red" ? "bg-rose-500 animate-pulse" : "bg-teal-600"
+                      }`}
+                    />
+                    <div>
+                      <b className="block text-brand-ink font-semibold">{task.name}</b>
+                      <small className="text-brand-muted font-mono text-[10px]">
+                        {task.code} · {task.time}
+                      </small>
                     </div>
-                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${task.color === "red" ? "bg-rose-500/10 text-rose-700" : "bg-teal-50 text-teal-800"}`}>
-                      {task.tag}
-                    </span>
                   </div>
-                ))}
-              </div>
+                  <span className="rounded-full bg-teal-50 px-2.5 py-1 text-[10px] font-bold text-teal-800 border border-teal-100">
+                    {task.tag}
+                  </span>
+                </div>
+              ))}
             </div>
-          </article>
+          </motion.article>
 
           {/* Bento 3: Tickets & Ordres de Travail */}
-          <article className="col-span-4 flex flex-col justify-between rounded-3xl border border-brand-line/80 bg-white p-8 shadow-sm transition-all duration-300 hover:shadow-card">
+          <motion.article
+            variants={fadeInUpVariants}
+            className="col-span-4 flex flex-col justify-between rounded-3xl border border-brand-line/80 bg-white p-8 shadow-sm transition-all duration-300 hover:shadow-card"
+          >
             <div>
               <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-100">
                 <Icon name="ticket" className="h-5 w-5" />
@@ -368,10 +369,13 @@ export function BentoFeatures() {
                 </div>
               ))}
             </div>
-          </article>
+          </motion.article>
 
           {/* Bento 4: Coûts & Pilotage (Wide Card) */}
-          <article className="col-span-8 flex flex-col md:flex-row items-center justify-between gap-8 rounded-3xl border border-brand-line/80 bg-white p-8 sm:p-10 shadow-sm transition-all duration-300 hover:shadow-card">
+          <motion.article
+            variants={fadeInUpVariants}
+            className="col-span-8 flex flex-col md:flex-row items-center justify-between gap-8 rounded-3xl border border-brand-line/80 bg-white p-8 sm:p-10 shadow-sm transition-all duration-300 hover:shadow-card"
+          >
             <div className="max-w-md">
               <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-sky-50 text-sky-800 border border-sky-100">
                 <Icon name="chart" className="h-5 w-5" />
@@ -429,10 +433,13 @@ export function BentoFeatures() {
                 </div>
               </div>
             </div>
-          </article>
+          </motion.article>
 
           {/* Bento 5: Pièces & Stock */}
-          <article className="col-span-12 flex flex-col md:flex-row items-center justify-between gap-8 rounded-3xl border border-brand-line/80 bg-white p-8 shadow-sm transition-all duration-300 hover:shadow-card">
+          <motion.article
+            variants={fadeInUpVariants}
+            className="col-span-12 flex flex-col md:flex-row items-center justify-between gap-8 rounded-3xl border border-brand-line/80 bg-white p-8 shadow-sm transition-all duration-300 hover:shadow-card"
+          >
             <div className="max-w-xl">
               <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-purple-50 text-purple-800 border border-purple-100">
                 <Icon name="stock" className="h-5 w-5" />
@@ -465,8 +472,8 @@ export function BentoFeatures() {
                 </div>
               ))}
             </div>
-          </article>
-        </div>
+          </motion.article>
+        </MotionStagger>
       </div>
     </section>
   );

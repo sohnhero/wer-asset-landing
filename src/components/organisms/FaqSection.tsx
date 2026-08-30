@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { FaqItem } from "../molecules/FaqItem";
 import { faqSectionData } from "@/data/faq";
 import { Icon } from "../atoms/Icon";
+import { MotionFadeIn, MotionStagger, MotionItem } from "../atoms/Motion";
 
 export function FaqSection() {
   const [openFaqId, setOpenFaqId] = useState<string>("faq-1");
@@ -16,11 +17,11 @@ export function FaqSection() {
     faqSectionData;
 
   return (
-    <section id="faq" className="relative bg-[#f5f8f7] py-14 sm:py-24 lg:py-32">
+    <section id="faq" className="relative bg-[#f5f8f7] py-14 sm:py-24 lg:py-32 overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-16 items-start">
           {/* Left Intro */}
-          <div className="lg:col-span-5 flex flex-col items-start lg:sticky lg:top-32">
+          <MotionFadeIn className="lg:col-span-5 flex flex-col items-start lg:sticky lg:top-32">
             <span className="text-xs font-extrabold tracking-widest text-teal-800 uppercase">
               {eyebrow}
             </span>
@@ -54,20 +55,21 @@ export function FaqSection() {
                 <Icon name="arrow" className="h-3.5 w-3.5 transform group-hover:translate-x-0.5 transition-transform" />
               </span>
             </a>
-          </div>
+          </MotionFadeIn>
 
           {/* Right Accordion Cards */}
-          <div className="lg:col-span-7 space-y-2.5 sm:space-y-3">
+          <MotionStagger stagger={0.08} className="lg:col-span-7 space-y-2.5 sm:space-y-3">
             {items.map((item, idx) => (
-              <FaqItem
-                key={item.id}
-                id={item.id}
-                index={idx + 1}
-                question={item.question}
-                answer={item.answer}
-                isOpen={openFaqId === item.id}
-                onToggle={() => toggleFaq(item.id)}
-              />
+              <MotionItem key={item.id}>
+                <FaqItem
+                  id={item.id}
+                  index={idx + 1}
+                  question={item.question}
+                  answer={item.answer}
+                  isOpen={openFaqId === item.id}
+                  onToggle={() => toggleFaq(item.id)}
+                />
+              </MotionItem>
             ))}
 
             {/* Mobile Direct Support Card */}
@@ -94,7 +96,7 @@ export function FaqSection() {
                 </span>
               </a>
             </div>
-          </div>
+          </MotionStagger>
         </div>
       </div>
     </section>
