@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { BrandLogo } from "../atoms/BrandLogo";
 import { Button } from "../atoms/Button";
@@ -16,16 +16,36 @@ export function HeaderNav({ onOpenDemo }: HeaderNavProps) {
   const { isScrolled } = useScrollPosition(20);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  // Prevent background scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
+
+  const mobileNavLinks = [
+    { label: "Fonctionnalités", href: "#features", num: "01", tag: "QR & TCO" },
+    { label: "Comment ça marche", href: "#how", num: "02", tag: "4 étapes" },
+    { label: "Solutions Métiers", href: "#solutions", num: "03", tag: "Rôles" },
+    { label: "Offres & Tarifs", href: "#pricing", num: "04", tag: "FCFA" },
+    { label: "Questions Fréquentes", href: "#faq", num: "05", tag: "Pilote" },
+  ];
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "border-b border-brand-line/80 bg-white/85 py-3.5 shadow-sm backdrop-blur-xl"
-          : "bg-transparent py-5"
+          ? "border-b border-brand-line/80 bg-white/90 py-3.5 shadow-xs backdrop-blur-xl"
+          : "bg-transparent py-4 sm:py-5"
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8">
-        {/* Brand */}
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 sm:px-6 lg:px-8">
+        {/* Brand Logo */}
         <BrandLogo variant="header" />
 
         {/* Desktop Navigation Links */}
@@ -61,63 +81,95 @@ export function HeaderNav({ onOpenDemo }: HeaderNavProps) {
           </Button>
         </div>
 
-        {/* Mobile Hamburger Button */}
+        {/* Mobile Hamburger Toggle Button */}
         <button
           type="button"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label={mobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
           aria-expanded={mobileMenuOpen}
-          className="flex h-10 w-10 items-center justify-center rounded-xl border border-brand-line bg-white text-brand-ink shadow-sm md:hidden"
+          className="relative z-50 flex h-10 w-10 items-center justify-center rounded-2xl border border-brand-line bg-white text-brand-ink shadow-xs md:hidden transition-all duration-200 active:scale-95"
         >
           <Icon name={mobileMenuOpen ? "close" : "menu"} className="h-5 w-5" />
         </button>
       </div>
 
-      {/* Mobile Navigation Drawer & Backdrop */}
+      {/* 2026 Clean Fullscreen Mobile Menu */}
       {mobileMenuOpen && (
-        <>
-          <div
-            onClick={() => setMobileMenuOpen(false)}
-            className="fixed inset-0 top-[65px] bg-black/20 backdrop-blur-xs z-40 md:hidden"
-            aria-hidden="true"
-          />
-          <div className="absolute inset-x-4 top-full mt-2 rounded-2xl border border-brand-line bg-white/95 p-6 shadow-2xl backdrop-blur-2xl md:hidden z-50 animate-in fade-in slide-in-from-top-2 duration-200">
-            <nav className="flex flex-col gap-4">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="border-b border-brand-line/50 pb-2 text-sm font-bold text-brand-ink transition-colors hover:text-teal-800"
-                >
-                  {item.label}
-                </Link>
-              ))}
-              <div className="mt-2 flex flex-col gap-3 pt-2">
-                <button
-                  type="button"
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    onOpenDemo();
-                  }}
-                  className="w-full rounded-xl border border-brand-line py-3 text-center text-xs font-bold text-brand-ink"
-                >
-                  {headerActions.demoBtn}
-                </button>
-                <Button
-                  href={headerActions.pilotHref}
-                  size="md"
-                  variant="primary"
-                  icon="arrow"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="w-full justify-center"
-                >
-                  {headerActions.pilotBtn}
-                </Button>
-              </div>
-            </nav>
+        <div className="fixed inset-0 z-40 flex flex-col justify-between bg-white px-6 pt-24 pb-8 md:hidden animate-in fade-in slide-in-from-top-4 duration-300 overflow-y-auto">
+          {/* Top Brand Header inside Fullscreen Overlay */}
+          <div className="flex items-center justify-between border-b border-slate-100 pb-4">
+            <div className="flex items-center gap-2">
+              <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="text-xs font-bold text-brand-ink uppercase tracking-wider">
+                Menu de navigation
+              </span>
+            </div>
+            <span className="text-[11px] font-semibold text-teal-800 bg-teal-50 border border-teal-100 px-2.5 py-0.5 rounded-full">
+              🇸🇳 Dakar
+            </span>
           </div>
-        </>
+
+          {/* Clean Modern Navigation List */}
+          <nav className="my-auto py-6 space-y-1">
+            {mobileNavLinks.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="group flex items-center justify-between py-3.5 border-b border-slate-100/80 transition-colors"
+              >
+                <div className="flex items-center gap-3">
+                  <span className="font-mono text-xs font-bold text-teal-700/60 group-hover:text-teal-900 transition-colors">
+                    {item.num}
+                  </span>
+                  <span className="font-sora text-lg font-bold text-slate-900 group-hover:text-teal-900 transition-colors">
+                    {item.label}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-[10px] font-semibold text-slate-600 bg-slate-100 px-2 py-0.5 rounded-md">
+                    {item.tag}
+                  </span>
+                  <span className="text-slate-600 group-hover:text-teal-900 group-hover:translate-x-1 transition-all text-sm font-bold">
+                    →
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </nav>
+
+          {/* Bottom Action Hub */}
+          <div className="space-y-2.5 pt-4 border-t border-slate-100">
+            <Button
+              href={headerActions.pilotHref}
+              size="md"
+              variant="primary"
+              icon="arrow"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full justify-center text-sm font-bold py-3.5 rounded-2xl shadow-md"
+            >
+              {headerActions.pilotBtn}
+            </Button>
+
+            <button
+              type="button"
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onOpenDemo();
+              }}
+              className="flex items-center justify-center gap-2 w-full rounded-2xl border border-slate-200 bg-slate-50 py-3 text-xs font-bold text-slate-800 hover:bg-slate-100 transition-all shadow-xs active:scale-98"
+            >
+              <span>▶</span>
+              <span>{headerActions.demoBtn} (30s)</span>
+            </button>
+
+            <div className="flex items-center justify-center gap-2 pt-2 text-[10px] font-medium text-slate-600 text-center">
+              <span>WËR ASSET</span>
+              <span>·</span>
+              <span>Chaque équipement a une histoire</span>
+            </div>
+          </div>
+        </div>
       )}
     </header>
   );
