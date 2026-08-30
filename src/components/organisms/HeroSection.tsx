@@ -44,7 +44,7 @@ export function HeroSection({ onOpenDemo }: HeroSectionProps) {
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-8">
           {/* Left Copy Column */}
-          <div className="flex flex-col items-start lg:col-span-5 text-left">
+          <div className="flex flex-col items-center text-center lg:items-start lg:text-left lg:col-span-5">
             {/* Top Pill Badge with Live Emerald Indicator */}
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-teal-600/20 bg-white/85 px-3.5 py-1.5 text-xs font-bold text-teal-900 shadow-sm backdrop-blur-md">
               <span className="relative flex h-2 w-2">
@@ -55,26 +55,26 @@ export function HeroSection({ onOpenDemo }: HeroSectionProps) {
             </div>
 
             {/* Hero Main Heading - Clean High-End Dual-Tone Gradient */}
-            <h1 className="font-sora text-4xl font-extrabold tracking-tight text-brand-ink sm:text-5xl lg:text-6xl lg:leading-[1.08]">
+            <h1 className="font-sora text-3xl font-extrabold tracking-tight text-brand-ink sm:text-5xl lg:text-6xl lg:leading-[1.08]">
               {heroContent.titlePrimary} <br />
               <span className="bg-gradient-to-r from-teal-900 via-teal-700 to-emerald-600 bg-clip-text text-transparent">
                 {heroContent.titleHighlight}
               </span>
             </h1>
 
-            <p className="mt-6 max-w-xl text-sm leading-relaxed text-brand-muted sm:text-base">
+            <p className="mt-5 max-w-xl text-sm leading-relaxed text-brand-muted sm:text-base">
               {heroContent.description}
             </p>
 
             {/* Actions */}
-            <div className="mt-8 flex flex-wrap items-center gap-4">
+            <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-4 w-full sm:w-auto">
               <Button
                 href="#contact"
                 size="md"
                 variant="primary"
                 icon="arrow"
                 iconPosition="right"
-                className="bg-gradient-to-r from-teal-950 via-teal-900 to-teal-900 shadow-lg shadow-teal-950/20 hover:shadow-xl hover:shadow-teal-950/30"
+                className="w-full sm:w-auto bg-gradient-to-r from-teal-950 via-teal-900 to-teal-900 shadow-lg shadow-teal-950/20 hover:shadow-xl hover:shadow-teal-950/30"
               >
                 {heroContent.ctaPrimary}
               </Button>
@@ -82,7 +82,7 @@ export function HeroSection({ onOpenDemo }: HeroSectionProps) {
               <button
                 type="button"
                 onClick={onOpenDemo}
-                className="group inline-flex items-center gap-3 rounded-xl border border-brand-line/80 bg-white/80 px-4 py-2.5 text-xs md:text-sm font-bold text-brand-ink shadow-xs backdrop-blur-md transition-all duration-200 hover:border-teal-700/40 hover:bg-white hover:text-teal-900 hover:shadow-md"
+                className="group inline-flex items-center justify-center gap-3 rounded-xl border border-brand-line/80 bg-white/80 px-4 py-2.5 text-xs md:text-sm font-bold text-brand-ink shadow-xs backdrop-blur-md transition-all duration-200 hover:border-teal-700/40 hover:bg-white hover:text-teal-900 hover:shadow-md w-full sm:w-auto"
               >
                 <span className="flex h-8 w-8 items-center justify-center rounded-full bg-teal-50 text-teal-800 transition-transform duration-200 group-hover:scale-110">
                   <Icon name="play" className="h-3.5 w-3.5 fill-teal-800 ml-0.5" />
@@ -92,7 +92,7 @@ export function HeroSection({ onOpenDemo }: HeroSectionProps) {
             </div>
 
             {/* Trust Badges */}
-            <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-3.5 border-t border-brand-line/60 pt-6 w-full">
+            <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-3.5 border-t border-brand-line/60 pt-6 w-full text-left">
               {heroContent.trustItems.map((item, idx) => (
                 <div
                   key={idx}
@@ -117,7 +117,7 @@ export function HeroSection({ onOpenDemo }: HeroSectionProps) {
             ref={containerRef}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            className="relative lg:col-span-7 h-[590px] sm:h-[650px] perspective-[1400px]"
+            className="relative lg:col-span-7 h-[480px] sm:h-[650px] flex items-center justify-center sm:block perspective-[1400px]"
           >
             {/* Main 3D Dashboard Shell */}
             <div

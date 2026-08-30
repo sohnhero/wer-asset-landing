@@ -73,44 +73,51 @@ export function HeaderNav({ onOpenDemo }: HeaderNavProps) {
         </button>
       </div>
 
-      {/* Mobile Navigation Drawer */}
+      {/* Mobile Navigation Drawer & Backdrop */}
       {mobileMenuOpen && (
-        <div className="absolute inset-x-4 top-full mt-2 rounded-2xl border border-brand-line bg-white/95 p-6 shadow-2xl backdrop-blur-2xl md:hidden">
-          <nav className="flex flex-col gap-4">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="border-b border-brand-line/50 pb-2 text-sm font-bold text-brand-ink transition-colors hover:text-teal-800"
-              >
-                {item.label}
-              </Link>
-            ))}
-            <div className="mt-2 flex flex-col gap-3 pt-2">
-              <button
-                type="button"
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenDemo();
-                }}
-                className="w-full rounded-xl border border-brand-line py-3 text-center text-xs font-bold text-brand-ink"
-              >
-                {headerActions.demoBtn}
-              </button>
-              <Button
-                href={headerActions.pilotHref}
-                size="md"
-                variant="primary"
-                icon="arrow"
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-full justify-center"
-              >
-                {headerActions.pilotBtn}
-              </Button>
-            </div>
-          </nav>
-        </div>
+        <>
+          <div
+            onClick={() => setMobileMenuOpen(false)}
+            className="fixed inset-0 top-[65px] bg-black/20 backdrop-blur-xs z-40 md:hidden"
+            aria-hidden="true"
+          />
+          <div className="absolute inset-x-4 top-full mt-2 rounded-2xl border border-brand-line bg-white/95 p-6 shadow-2xl backdrop-blur-2xl md:hidden z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+            <nav className="flex flex-col gap-4">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="border-b border-brand-line/50 pb-2 text-sm font-bold text-brand-ink transition-colors hover:text-teal-800"
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <div className="mt-2 flex flex-col gap-3 pt-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onOpenDemo();
+                  }}
+                  className="w-full rounded-xl border border-brand-line py-3 text-center text-xs font-bold text-brand-ink"
+                >
+                  {headerActions.demoBtn}
+                </button>
+                <Button
+                  href={headerActions.pilotHref}
+                  size="md"
+                  variant="primary"
+                  icon="arrow"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="w-full justify-center"
+                >
+                  {headerActions.pilotBtn}
+                </Button>
+              </div>
+            </nav>
+          </div>
+        </>
       )}
     </header>
   );
