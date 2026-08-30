@@ -91,21 +91,24 @@ export function HeroSection({ onOpenDemo }: HeroSectionProps) {
               </button>
             </div>
 
-            {/* Trust Badges: Compact on Mobile, Grid on Tablet/Desktop */}
-            <div className="mt-8 grid grid-cols-3 gap-2 sm:gap-3.5 border-t border-brand-line/60 pt-5 w-full text-left">
+            {/* Trust Badges: Modern 2026 SaaS Micro-Cards */}
+            <div className="mt-8 grid grid-cols-3 gap-2.5 sm:gap-3.5 border-t border-brand-line/60 pt-6 w-full">
               {heroContent.trustItems.map((item, idx) => (
                 <div
                   key={idx}
-                  className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-1.5 sm:gap-2.5 rounded-xl border border-brand-line/70 bg-white/80 p-2 sm:p-2.5 shadow-xs backdrop-blur-xs"
+                  className="group relative flex flex-col sm:flex-row items-center sm:items-center text-center sm:text-left gap-2 sm:gap-3 rounded-2xl border border-slate-200/90 bg-gradient-to-b from-white via-[#fcfdfd] to-[#f7f9f9] p-2.5 sm:p-3.5 shadow-xs backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-teal-400 hover:shadow-md hover:bg-white overflow-hidden"
                 >
-                  <div className="flex h-7 w-7 sm:h-9 sm:w-9 flex-none items-center justify-center rounded-lg border border-teal-100 bg-teal-50 text-teal-800 shadow-xs">
-                    <Icon name={item.icon} className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                  <div className="pointer-events-none absolute -right-3 -top-3 h-10 w-10 rounded-full bg-teal-500/10 blur-md group-hover:bg-teal-500/25 transition-all" />
+                  <div className="flex h-8 w-8 sm:h-10 sm:w-10 flex-none items-center justify-center rounded-xl bg-gradient-to-br from-teal-950 via-teal-900 to-emerald-700 text-teal-100 shadow-xs border border-teal-800/40 transition-transform duration-300 group-hover:scale-105">
+                    <Icon name={item.icon} className="h-4 w-4 sm:h-5 sm:w-5" />
                   </div>
                   <div className="flex flex-col min-w-0">
-                    <b className="text-[11px] sm:text-xs font-bold text-brand-ink truncate">{item.title}</b>
-                    <small className="text-[9px] sm:text-[10px] text-brand-muted leading-tight hidden sm:block">
+                    <b className="font-sora text-[11px] sm:text-[13px] font-bold text-slate-900 group-hover:text-teal-950 transition-colors leading-tight truncate">
+                      {item.title}
+                    </b>
+                    <span className="text-[9px] sm:text-[10.5px] text-slate-500 font-medium leading-tight mt-0.5 hidden sm:block">
                       {item.subtitle}
-                    </small>
+                    </span>
                   </div>
                 </div>
               ))}
