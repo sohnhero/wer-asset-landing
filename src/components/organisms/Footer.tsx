@@ -19,14 +19,15 @@ export function Footer() {
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[11px] font-semibold text-teal-200 backdrop-blur-sm">
+          {/* Symmetrical Badges: Equal 2-Col Grid on Mobile, Flex on Desktop */}
+          <div className="grid grid-cols-2 gap-2 sm:flex sm:items-center sm:gap-3 w-full sm:w-auto mt-2 sm:mt-0">
+            <div className="flex items-center justify-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-2.5 sm:px-3.5 py-2 text-[10px] sm:text-[11px] font-semibold text-teal-200 backdrop-blur-sm text-center">
               <span>🇸🇳</span>
-              <span>Conçu à Dakar · Fait pour l'Afrique</span>
+              <span className="truncate">Conçu à Dakar</span>
             </div>
-            <div className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-950/40 px-3 py-1.5 text-[11px] font-semibold text-emerald-300 backdrop-blur-sm">
-              <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>Système 100% opérationnel</span>
+            <div className="flex items-center justify-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-950/40 px-2.5 sm:px-3.5 py-2 text-[10px] sm:text-[11px] font-semibold text-emerald-300 backdrop-blur-sm text-center">
+              <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 flex-none rounded-full bg-emerald-400 animate-pulse" />
+              <span className="truncate">100% opérationnel</span>
             </div>
           </div>
         </div>
